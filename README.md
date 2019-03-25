@@ -5,4 +5,6 @@ This project is in development and is part of a school course; Mobile Applicatio
 
 ## Technologies used
 
-* <a href="https://kotlinlang.org/">Kotlin</a>
+* <a href="https://developer.android.com/studio">Android Studio</a>
+
+* Java
