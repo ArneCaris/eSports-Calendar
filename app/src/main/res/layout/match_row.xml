@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:id="@+id/parent_layout">
 
-    <TextView
-            android:text="{TIME}"
+        <TextView
+            android:id="@+id/textView_match_time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView_match_time" android:layout_weight="10"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_match_title" android:layout_marginEnd="24dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="30dp"
+            android:layout_centerVertical="true"
+            android:layout_weight="30"
+            android:textSize="18sp"
+            android:text="{TIME}" />
 
-    <TextView
-            android:text="X vs X"
+        <TextView
+            android:id="@+id/textView_match_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView_match_title" android:layout_weight="10"
-            app:layout_constraintTop_toTopOf="@+id/textView_match_time" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_match_time"
-            android:layout_marginStart="24dp" app:layout_constraintEnd_toStartOf="@+id/imageView4"
-            android:layout_marginBottom="16dp" android:layout_marginTop="8dp"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.291"
-    />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toStartOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/textView_match_time"
+            android:layout_weight="30"
+            android:textSize="18sp"
+            android:text="X vs X" />
 
-    <ImageView
-            android:layout_width="20dp"
-            android:layout_height="30dp" app:srcCompat="@drawable/bell"
+        <ImageView
             android:id="@+id/imageView4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
             android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/textView_match_title"
-            android:layout_marginStart="24dp"
-            android:contentDescription="Notification"/>
+            android:contentDescription="Notification"
+            android:src="@drawable/bell" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
