@@ -36,21 +36,9 @@ public class MatchActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-//        initImageBitMaps();
         fetchJSON();
     }
 
-
-
-//    private void initImageBitMaps(){
-//        Log.d(TAG, "initImageBitMaps: preparing bitmaps");
-//
-//        match_titles.add("X vs X");
-//        match_titles.add("Y vs Y");
-//        match_titles.add("Z vs Z");
-//
-//        initMatchRecylerView();
-//    }
 
     private void fetchJSON(){
         Log.d(TAG, "Fetch JSON: init Match RecyclerView");
@@ -65,7 +53,6 @@ public class MatchActivity extends AppCompatActivity {
             Response response = client.newCall(request).execute();
             String body       =  response.body().string();
             Gson gson         = new GsonBuilder().create();
-//            ArrayList<Match> matches  = gson.fromJson(body, new ArrayList<Match>().getClass());
             Match[] matches = gson.fromJson(body, Match[].class);
             initMatchRecylerView(matches);
         }
@@ -76,7 +63,6 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     private void initMatchRecylerView(Match[] matches){
-        Log.d(TAG, "initMatchRecylerView: init Match RecyclerView");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MatchAdapter adapter      = new MatchAdapter(this, matches);

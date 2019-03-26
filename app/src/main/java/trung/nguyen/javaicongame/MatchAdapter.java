@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
+        String matchInfo = matches[position].getName() + ": " + matches[position].getId().toString();
+
         String oldTimeString = new SimpleDateFormat("h:mm a").format(matches[position].getBegin_at());
         holder.matchBegin.setText(oldTimeString);
         holder.matchTitle.setText(matches[position].getName());
@@ -43,8 +46,15 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.matchTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: " + matches[position]);
-                Toast.makeText(context, (CharSequence) matches[position].getName().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, (CharSequence) matches[position].getBegin_at().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -59,12 +69,14 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         TextView matchBegin;
         TextView matchTitle;
         RelativeLayout parentLayout;
+        ImageView notificationIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            matchBegin = itemView.findViewById(R.id.textView_match_time);
-            matchTitle = itemView.findViewById(R.id.textView_match_title);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            matchBegin       = itemView.findViewById(R.id.textView_match_time);
+            matchTitle       = itemView.findViewById(R.id.textView_match_title);
+            parentLayout     = itemView.findViewById(R.id.parent_layout);
+            notificationIcon = itemView.findViewById(R.id.notification_icon);
         }
     }
 

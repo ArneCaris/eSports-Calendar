@@ -24,14 +24,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_toStartOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/notification_icon"
             android:layout_toEndOf="@+id/textView_match_time"
             android:layout_weight="30"
             android:textSize="18sp"
             android:text="X vs X" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/notification_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentTop="true"
