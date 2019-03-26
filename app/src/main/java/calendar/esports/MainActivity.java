@@ -1,5 +1,6 @@
 package calendar.esports;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+    //transactions for moving between fragments
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment);

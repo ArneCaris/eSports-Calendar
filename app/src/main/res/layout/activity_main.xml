@@ -13,13 +13,14 @@
         android:layout_alignParentBottom="true"
         app:itemTextColor="@android:color/black"
         app:itemIconTint="@android:color/black"
+        app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Body1"
         app:menu="@menu/bottom_nav" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav"
         android:id="@+id/frame"
-        android:background="#000926"
+        android:background="#090023"
         />
 
 </RelativeLayout>
