@@ -1,9 +1,9 @@
 package trung.nguyen.javaicongame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
-
-    private static final String TAG = "MatchAdapter";
 
     private Match[] matches;
     private Context context;
@@ -47,7 +46,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(context, MatchDetails.class);
+                intent.putExtra("MatchDetail", matches[position]);
+                context.startActivity(intent);
             }
         });
 
@@ -58,6 +59,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {

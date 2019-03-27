@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String game = "ow";
-                System.out.println(game + " MATCH DISPLAYS!");
                 Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String game = "csgo";
-                System.out.println(game + " MATCH DISPLAYS!");
                 Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String game = "dota2";
-                System.out.println(game + " MATCH DISPLAYS!");
                 Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 intent.putExtra("game", game);
                 startActivity(intent);
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String game = "lol";
-                System.out.println(game + " MATCH DISPLAYS!");
                 Intent intent = new Intent(MainActivity.this, MatchActivity.class);
                 intent.putExtra("game", game);
                 startActivity(intent);

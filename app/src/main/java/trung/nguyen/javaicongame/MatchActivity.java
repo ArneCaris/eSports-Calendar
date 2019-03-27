@@ -11,8 +11,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -22,16 +20,10 @@ public class MatchActivity extends AppCompatActivity {
 
     private static final String TAG = "MatchActivity";
 
-    private ArrayList<String> match_titles = new ArrayList<>();
-    private ArrayList<String> match_times  = new ArrayList<>();
-    private ArrayList<Match>  matches      = new ArrayList<>();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
-        Log.d(TAG, "onCreate: started.");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -41,8 +33,6 @@ public class MatchActivity extends AppCompatActivity {
 
 
     private void fetchJSON(){
-        Log.d(TAG, "Fetch JSON: init Match RecyclerView");
-
         String game = getIntent().getStringExtra("game").toString();
 
         String url  = "https://api.pandascore.co/" + game + "/matches/upcoming?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";

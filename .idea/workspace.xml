@@ -40,42 +40,44 @@
     <session id="1282796308">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.42" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
           <entry key="gradle" value="3" />
-          <entry key="java" value="11" />
-          <entry key="xml" value="13" />
+          <entry key="java" value="18" />
+          <entry key="xml" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="3" />
-          <entry key="JAVA" value="11" />
-          <entry key="XML" value="13" />
+          <entry key="JAVA" value="18" />
+          <entry key="XML" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="3" />
           <entry key="gradle" value="32" />
-          <entry key="java" value="3403" />
+          <entry key="java" value="4610" />
           <entry key="txt" value="4" />
-          <entry key="xml" value="401" />
+          <entry key="xml" value="610" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="32" />
-          <entry key="JAVA" value="3403" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="XML" value="401" />
+          <entry key="JAVA" value="4610" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="XML" value="610" />
         </counts>
       </usages-collector>
     </session>
@@ -85,20 +87,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-376">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="30" column="83" lean-forward="true" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
+            <state relative-caret-position="170">
+              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/Models.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1496">
+              <caret line="132" column="36" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,20 +115,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match_row.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetailsAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,6 +141,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile_vertical" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -141,35 +149,45 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>match_title</find>
+      <find>img</find>
+      <find>match_row</find>
+      <find>MatchAda</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/CustomViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_match.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/Models.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/match_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match_details_row.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_match_details.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetailsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/Models.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetails.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-15" />
-    <option name="y" value="6" />
-    <option name="width" value="1944" />
-    <option name="height" value="1044" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="111" />
+    <option name="y" value="21" />
+    <option name="width" value="1560" />
+    <option name="height" value="1089" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -196,6 +214,13 @@
             <path>
               <item name="JavaIconGame" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="javaicongame" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Models.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="JavaIconGame" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
@@ -212,9 +237,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,17 +246,18 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../tools" />
     <property name="device.picker.selection" value="Nexus_One_API_25" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../KotlinYouTubeLBTA" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="trung.nguyen.javaicongame" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\Esport\JavaIconGame\app\src\main\res\drawable-v24" />
     </key>
     <key name="android.template.packageName">
       <recent name="trung.nguyen.javaicongame" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ASUS\Desktop\Esport\JavaIconGame\app\src\main\res\drawable-v24" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="trung.nguyen.javaicongame" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,32 +403,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="4" width="1296" height="696" extended-state="0" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21682848" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23562753" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Find" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3283859" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.36920223" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.21521336" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3283859" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3320965" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39517626" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3283859" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.2574074" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.031539887" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.3283859" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.37135923" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.3708502" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
   </component>
@@ -421,12 +444,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/CustomViewHolder.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/12fc30c9f19ea8199bfb7dacb2a5ca18/jars/classes.jar!/android/support/v7/widget/RecyclerView.class">
@@ -439,27 +462,6 @@
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/Models.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-end-line="67" />
-          <folding>
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1111#1112#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1253#1254#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -470,31 +472,47 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_match.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        <state relative-caret-position="272">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match_row.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+        <state relative-caret-position="17">
+          <caret line="26" column="60" selection-end-line="45" selection-end-column="17" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_match_details.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match_details_row.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_match.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="1" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-226">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -503,21 +521,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+        <state relative-caret-position="-376">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchDetailsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="30" column="83" lean-forward="true" selection-start-line="30" selection-start-column="83" selection-end-line="30" selection-end-column="83" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/Models.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="132" column="36" selection-start-line="132" selection-start-column="36" selection-end-line="132" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/trung/nguyen/javaicongame/MatchAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
