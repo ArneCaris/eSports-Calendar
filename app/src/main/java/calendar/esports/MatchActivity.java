@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -28,6 +30,7 @@ public class MatchActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         fetchJSON();
+
     }
 
 
@@ -57,4 +60,5 @@ public class MatchActivity extends AppCompatActivity {
         MatchAdapter adapter      = new MatchAdapter(this, matches);
         recyclerView.setAdapter(adapter);
     }
+
 }

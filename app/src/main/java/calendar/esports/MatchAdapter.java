@@ -30,6 +30,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.match_row, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
@@ -42,22 +43,20 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.matchBegin.setText(oldTimeString);
         holder.matchTitle.setText(matches[position].getName());
 
-        holder.matchTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.matchTitle.setOnClickListener(View -> {
+
                 Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MatchDetails.class);
                 intent.putExtra("MatchDetail", matches[position]);
                 context.startActivity(intent);
-            }
+
         });
 
-        holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, (CharSequence) matches[position].getBegin_at().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        holder.notificationIcon.setOnClickListener(View ->
+                Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
+                        .toString(), Toast.LENGTH_SHORT).show());
+
+
     }
 
 

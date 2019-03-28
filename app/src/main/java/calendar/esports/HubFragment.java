@@ -29,54 +29,40 @@ public class HubFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_hub, container, false);
+
 
         ImageView csgo = (ImageView) view.findViewById(R.id.csgo);
-        csgo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String game = "csgo";
-                Intent i = new Intent(getActivity(), MatchActivity.class);
-                i.putExtra("game", game);
-                startActivity(i);
-            }
+        csgo.setOnClickListener((View) -> {
+            String game = "csgo";
+            Intent i = new Intent(getActivity(), MatchActivity.class);
+            i.putExtra("game", game);
+            startActivity(i);
         });
 
         ImageView lol = (ImageView) view.findViewById(R.id.lol);
-        lol.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String game = "lol";
-                Intent i = new Intent(getActivity(), MatchActivity.class);
-                i.putExtra("game", game);
-                startActivity(i);
-            }
+        lol.setOnClickListener((View) -> {
+            String game = "lol";
+            Intent i = new Intent(getActivity(), MatchActivity.class);
+            i.putExtra("game", game);
+            startActivity(i);
         });
 
         ImageView dota2 = (ImageView) view.findViewById(R.id.dota2);
-        dota2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String game = "dota2";
-                Intent i = new Intent(getActivity(), MatchActivity.class);
-                i.putExtra("game", game);
-                startActivity(i);
-            }
+        dota2.setOnClickListener((View) -> {
+            String game = "dota2";
+            Intent i = new Intent(getActivity(), MatchActivity.class);
+            i.putExtra("game", game);
+            startActivity(i);
         });
 
         ImageView ow = (ImageView) view.findViewById(R.id.ow);
-        ow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String game = "ow";
-                Intent i = new Intent(getActivity(), MatchActivity.class);
-                i.putExtra("game", game);
-                startActivity(i);
-            }
+        ow.setOnClickListener((View ) -> {
+            String game = "ow";
+            Intent i = new Intent(getActivity(), MatchActivity.class);
+            i.putExtra("game", game);
+            startActivity(i);
         });
-
-
-
         return view;
     }
 

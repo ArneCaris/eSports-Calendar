@@ -12,17 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MatchDetails" android:label="Matches">
+        <activity android:name=".NewsActivity"></activity>
+        <activity
+            android:name=".MatchDetails"
+            android:label="Matches">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MatchActivity" />
         </activity>
-
-        <activity android:name=".MatchActivity" android:label="Matches" android:launchMode="singleTop">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+        <activity
+            android:name=".MatchActivity"
+            android:label="Matches"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlaceholderActivity">
-        </activity>
+        <activity android:name=".PlaceholderActivity"></activity>
     </application>
 
 </manifest>

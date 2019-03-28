@@ -4,6 +4,8 @@
     <string name="app_hub">Directory</string>
     <string name="app_calendar">Calendar</string>
     <string name="app_dir">Directory</string>
+    <string name="app_welcome">Welcome to your Hub</string>
+    <string name="app_recommend">Recommended for You</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

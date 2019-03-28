@@ -4,6 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorMain"
     android:padding="15dp"
     android:id="@+id/parent_layout">
 
@@ -16,6 +17,7 @@
             android:layout_centerVertical="true"
             android:layout_weight="30"
             android:textSize="18sp"
+            android:textColor="@color/colorWhite"
             android:text="{TIME}" />
 
         <TextView
@@ -28,6 +30,7 @@
             android:layout_toEndOf="@+id/textView_match_time"
             android:layout_weight="30"
             android:textSize="18sp"
+            android:textColor="@color/colorWhite"
             android:text="X vs X" />
 
         <ImageView
@@ -41,6 +44,6 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:contentDescription="Notification"
-            android:src="@drawable/bell" />
+            android:src="@drawable/ic_notifications_black_24dp" />
 
 </RelativeLayout>

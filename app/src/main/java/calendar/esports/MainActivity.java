@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -29,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         final HubFragment hubFragment = new HubFragment();
         final CalendarFragment calendarFragment = new CalendarFragment();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
                 int id = menuItem.getItemId();
                 if (id == R.id.home){
                     setFragment(homeFragment);
@@ -45,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return false;
-            }
         });
     }
     //transactions for moving between fragments
