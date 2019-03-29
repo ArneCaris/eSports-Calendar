@@ -5,7 +5,6 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3d0a63"
     tools:context=".CalendarFragment">
 
     <!-- TODO: Update blank fragment layout -->

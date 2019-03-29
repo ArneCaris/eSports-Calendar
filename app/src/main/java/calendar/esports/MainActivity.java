@@ -1,6 +1,5 @@
 package calendar.esports;
 
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -19,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -30,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         final HubFragment hubFragment = new HubFragment();
         final CalendarFragment calendarFragment = new CalendarFragment();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
                 int id = menuItem.getItemId();
                 if (id == R.id.home){
                     setFragment(homeFragment);
@@ -46,9 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return false;
-            }
         });
-
     }
     //transactions for moving between fragments
     private void setFragment(Fragment fragment) {
