@@ -4,7 +4,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorMain"
+    android:background="@drawable/border"
+    android:backgroundTint="@color/colorPrimary"
     android:padding="15dp"
     android:id="@+id/parent_layout">
 
@@ -40,7 +41,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:contentDescription="Notification"

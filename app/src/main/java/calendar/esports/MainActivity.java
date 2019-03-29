@@ -1,5 +1,6 @@
 package calendar.esports;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
+        
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     setFragment(calendarFragment);
                     return true;
                 }
-
                 return false;
         });
     }

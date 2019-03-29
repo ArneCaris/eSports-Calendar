@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
@@ -39,7 +40,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         String matchInfo = matches[position].getName() + ": " + matches[position].getId().toString();
 
-        String oldTimeString = new SimpleDateFormat("h:mm a").format(matches[position].getBegin_at());
+        String oldTimeString = new SimpleDateFormat("E  h:mm a").format(matches[position].getBegin_at());
         holder.matchBegin.setText(oldTimeString);
         holder.matchTitle.setText(matches[position].getName());
 
@@ -55,10 +56,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.notificationIcon.setOnClickListener(View ->
                 Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
                         .toString(), Toast.LENGTH_SHORT).show());
-
-
     }
-
 
 
     @Override
