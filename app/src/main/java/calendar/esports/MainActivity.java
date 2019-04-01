@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
-        
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 

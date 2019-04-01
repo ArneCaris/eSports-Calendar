@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorMain"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".HubFragment">
@@ -13,16 +14,6 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textGrid"
-            android:text="@string/app_dir"
-            android:textSize="30sp"
-            android:textColor="@color/colorWhite"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
 
     </RelativeLayout>
 
@@ -50,7 +41,7 @@
             app:cardBackgroundColor="@color/colorWhite"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
-            
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,18 +50,19 @@
 
                 <ImageView
                     android:id="@+id/csgo"
+                    android:layout_marginTop="24sp"
                     android:src="@drawable/cs_logo"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -100,14 +92,7 @@
 
 
             </LinearLayout>
-
-
-
-
-
-
         </android.support.v7.widget.CardView>
-
         <android.support.v7.widget.CardView
             android:layout_width="100dp"
             android:layout_height="0dp"
@@ -118,31 +103,19 @@
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/dota2"
                     android:src="@drawable/dota"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
-
-
             </LinearLayout>
-
-
-
-
-
-
         </android.support.v7.widget.CardView>
-
         <android.support.v7.widget.CardView
             android:layout_width="100dp"
             android:layout_height="0dp"
@@ -153,34 +126,19 @@
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
-
                 <ImageView
                     android:id="@+id/ow"
                     android:src="@drawable/ow"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
-
-
             </LinearLayout>
-
-
-
-
-
-
         </android.support.v7.widget.CardView>
-
-
-
-
     </GridLayout>
 
 </LinearLayout>

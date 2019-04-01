@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
-    android:backgroundTint="@color/colorPrimary"
+    android:backgroundTint="@color/colorWhite"
     android:padding="15dp"
     android:id="@+id/parent_layout">
 
