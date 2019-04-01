@@ -13,22 +13,21 @@
         android:layout_height="60dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="0dp"
-        android:layout_marginEnd="30dp"
-        tools:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/ic_launcher"
         android:id="@+id/imageView_team_img"/>
 
     <TextView
-        android:id="@+id/textView_match_title"
+        android:id="@+id/textView_team_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="100dp"
-        android:layout_toStartOf="@+id/notification_icon"
+        android:layout_marginEnd="80dp"
         android:layout_toEndOf="@+id/imageView_team_img"
         android:layout_weight="30"
         android:text="Team X"
-        android:textSize="25dp" />
+        android:textSize="15dp" />
 
 
 
@@ -41,6 +40,8 @@
         android:layout_marginEnd="20dp"
         android:layout_centerVertical="true"
         android:layout_weight="1"
+        android:id="@+id/textView_team_result"
         android:textSize="25dp"
         android:text="0"/>
+
 </RelativeLayout>
