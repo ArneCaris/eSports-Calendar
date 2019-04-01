@@ -50,11 +50,17 @@
 
                 <ImageView
                     android:id="@+id/csgo"
+<<<<<<< HEAD
                     android:layout_marginTop="24sp"
                     android:src="@drawable/cs_logo"
                     android:layout_gravity="center_horizontal"
+=======
+>>>>>>> 538113d56b5004403a931ddc8b9cde995327dee5
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cs_logo" />
 
             </LinearLayout>
 

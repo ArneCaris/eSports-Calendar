@@ -45,11 +45,8 @@ android {
         // Dependencies
         implementation 'com.squareup.okhttp3:okhttp:3.14.0'
         implementation 'com.google.code.gson:gson:2.8.5'
+        // Picasso
+        implementation 'com.squareup.picasso:picasso:2.71828'
 
     }
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:28.+'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
