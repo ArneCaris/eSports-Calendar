@@ -53,9 +53,26 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         });
 
-        holder.notificationIcon.setOnClickListener(View ->
-                Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
-                        .toString(), Toast.LENGTH_SHORT).show());
+        holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
+            int notificationPos = 0;
+            public void onClick(View view) {
+
+                if(notificationPos == 0){
+                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
+                    notificationPos = 1;
+
+                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
+                            .toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                else if (notificationPos == 1){
+                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
+                    notificationPos = 0;
+                }
+            }
+        });
+
+
     }
 
 
