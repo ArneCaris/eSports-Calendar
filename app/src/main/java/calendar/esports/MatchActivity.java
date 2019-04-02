@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -37,7 +38,7 @@ public class MatchActivity extends AppCompatActivity {
     private void fetchJSON(){
         String game = getIntent().getStringExtra("game").toString();
 
-        String url  = "https://api.pandascore.co/" + game + "/matches/running?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";
+        String url  = "https://api.pandascore.co/" + game + "/matches?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";
         Request request = new Request.Builder().url(url).build();
         OkHttpClient client = new OkHttpClient();
 
@@ -46,6 +47,7 @@ public class MatchActivity extends AppCompatActivity {
             String body       =  response.body().string();
             Gson gson         = new GsonBuilder().create();
             Match[] matches = gson.fromJson(body, Match[].class);
+            Arrays.sort(matches);
             initMatchRecyclerView(matches);
         }
         catch (IOException e) {
