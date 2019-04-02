@@ -37,7 +37,7 @@ public class MatchActivity extends AppCompatActivity {
     private void fetchJSON(){
         String game = getIntent().getStringExtra("game").toString();
 
-        String url  = "https://api.pandascore.co/" + game + "/matches/running?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";
+        String url  = "https://api.pandascore.co/" + game + "/matches/?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";
         Request request = new Request.Builder().url(url).build();
         OkHttpClient client = new OkHttpClient();
 

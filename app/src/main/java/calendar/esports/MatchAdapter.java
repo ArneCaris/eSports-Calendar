@@ -2,8 +2,14 @@ package calendar.esports;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +20,11 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import static android.app.PendingIntent.getActivity;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
 
@@ -69,7 +78,32 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
                 }
+                //Function to add event to the calendar (with bundle? or args? or import calendar?)
+                String time = matches[position].getBegin_at().toString();
+                Log.d("MATCHTIME", "onClick: " + time);
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                try {
+                    Date mDate = sdf.parse(time);
+                    long timeInMilliseconds = mDate.getTime();
+                    Log.d("MATCHTIME", "onClick: " + timeInMilliseconds);
+
+//                    Bundle args = new Bundle();
+//                    args.putLong("time", timeInMilliseconds);
+//                    CalendarFragment fragobj = new CalendarFragment();
+//                    fragobj.setArguments(args);
+//
+//                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.header_text, fragobj);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
+
         });
 
 
