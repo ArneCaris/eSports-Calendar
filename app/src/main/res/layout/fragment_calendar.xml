@@ -10,7 +10,8 @@
     <!-- TODO: Update blank fragment layout -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack">
 
         <TextView
             android:id="@+id/header_text"
@@ -19,13 +20,14 @@
             android:gravity="center"
             android:text="@string/header_text"
             android:textColor="#FFF"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="75dp"
             app:compactCalendarBackgroundColor="#3d0a63"
             app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
             app:compactCalendarMultiEventIndicatorColor="#fff"
@@ -38,9 +40,9 @@
             android:id="@+id/events_view"
             android:layout_width="match_parent"
             android:layout_height="255dp"
+            android:layout_marginTop="10dp"
             android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calendar_view"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintTop_toBottomOf="@id/calendar_view" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
