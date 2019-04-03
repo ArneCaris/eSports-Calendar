@@ -3,14 +3,20 @@ package calendar.esports;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -35,6 +41,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
+        String matchInfo = matches[position].getName() + ": " + matches[position].getId().toString();
+
         String matchHour = new SimpleDateFormat("h:mm a").format(matches[position].getBegin_at());
         holder.matchHour.setText(matchHour);
 
@@ -47,10 +55,25 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         String matchWeekDay = new SimpleDateFormat("E").format(matches[position].getBegin_at());
         holder.matchWeekDay.setText(matchWeekDay);
 
-//        String oldTimeString = new SimpleDateFormat("E  h:mm a").format(matches[position].getBegin_at());
-//        holder.matchBegin.setText(oldTimeString);
-//        holder.matchTitle.setText(matches[position].getName());
-//
+        Opponents[] opponents = matches[position].getOpponents();
+        if(opponents.length > 0){
+
+            Team team1  = opponents[0].getOpponent();
+            holder.matchTeam1.setText(team1.getName());
+
+            if(team1.getImage_url() != null) {
+                Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+            }
+
+            Team team2  = opponents[1].getOpponent();
+            holder.matchTeam2.setText(team2.getName());
+
+            if(team2.getImage_url() != null) {
+                Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+            }
+        }
+
+
 //        holder.matchTitle.setOnClickListener(View -> {
 //
 //                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
@@ -60,48 +83,48 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 //
 //        });
 //
-//        holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
-//            int notificationPos = 0;
-//            public void onClick(View view) {
+        holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
+            int notificationPos = 0;
+            public void onClick(View view) {
+
+                if(notificationPos == 0){
+                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
+                    notificationPos = 1;
+
+                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
+                            .toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                else if (notificationPos == 1){
+                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
+                    notificationPos = 0;
+                }
+                //Function to add event to the calendar (with bundle? or args? or import calendar?)
+                String time = matches[position].getBegin_at().toString();
+                Log.d("MATCHTIME", "onClick: " + time);
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                try {
+                    Date mDate = sdf.parse(time);
+                    long timeInMilliseconds = mDate.getTime();
+                    Log.d("MATCHTIME", "onClick: " + timeInMilliseconds);
+
+//                    Bundle args = new Bundle();
+//                    args.putLong("time", timeInMilliseconds);
+//                    CalendarFragment fragobj = new CalendarFragment();
+//                    fragobj.setArguments(args);
 //
-//                if(notificationPos == 0){
-//                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
-//                    notificationPos = 1;
-//
-//                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
-//                            .toString(), Toast.LENGTH_SHORT).show();
-//                }
-//
-//                else if (notificationPos == 1){
-//                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
-//                    notificationPos = 0;
-//                }
-//                //Function to add event to the calendar (with bundle? or args? or import calendar?)
-//                String time = matches[position].getBegin_at().toString();
-//                Log.d("MATCHTIME", "onClick: " + time);
-//                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-//                try {
-//                    Date mDate = sdf.parse(time);
-//                    long timeInMilliseconds = mDate.getTime();
-//                    Log.d("MATCHTIME", "onClick: " + timeInMilliseconds);
-//
-////                    Bundle args = new Bundle();
-////                    args.putLong("time", timeInMilliseconds);
-////                    CalendarFragment fragobj = new CalendarFragment();
-////                    fragobj.setArguments(args);
-////
-////                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
-////                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-////                    fragmentTransaction.replace(R.id.header_text, fragobj);
-////                    fragmentTransaction.addToBackStack(null);
-////                    fragmentTransaction.commit();
-//
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
+//                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.header_text, fragobj);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
     }
 

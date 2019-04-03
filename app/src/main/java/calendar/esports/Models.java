@@ -162,3 +162,13 @@ class Result implements Serializable{
         this.score = score;
     }
 }
+
+//league: {
+//        url: "http://www.lolesports.com/en_US/lms/",
+//        slug: "league-of-legends-lms-taiwan",
+//        name: "LMS",
+//        modified_at: "2019-03-05T19:00:14Z",
+//        live_supported: true,
+//        image_url: "https://cdn.pandascore.co/images/league/image/295/b030bfca-cac7-11e7-92d4-0e6c723feec8.png",
+//        id: 295,
+//        }
