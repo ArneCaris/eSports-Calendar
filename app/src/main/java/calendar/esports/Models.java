@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class Match implements Serializable{
+class Match implements Serializable, Comparable<Match>{
     private Integer id;
     private String name;
     private Date begin_at;
@@ -59,7 +59,10 @@ class Match implements Serializable{
         this.results = results;
     }
 
-
+    @Override
+    public int compareTo(Match m) {
+        return getBegin_at().compareTo(m.getBegin_at());
+    }
 }
 
 class Opponents implements Serializable{

@@ -12,6 +12,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,7 +50,10 @@ public class MatchActivity extends AppCompatActivity {
             Response response = client.newCall(request).execute();
             String body       =  response.body().string();
             Gson gson         = new GsonBuilder().create();
-            Match[] matches = gson.fromJson(body, Match[].class);
+            Match[] json      = gson.fromJson(body, Match[].class);
+            List<Match> listOfJson = Arrays.asList(json);
+            Collections.sort(listOfJson);
+            Match[] matches   = listOfJson.toArray(json);
             initMatchRecyclerView(matches);
         }
         catch (IOException e) {
