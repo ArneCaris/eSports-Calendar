@@ -1,6 +1,7 @@
 package calendar.esports;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -55,6 +56,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         String matchWeekDay = new SimpleDateFormat("E").format(matches[position].getBegin_at());
         holder.matchWeekDay.setText(matchWeekDay);
 
+        String matchLeague = matches[position].getLeague().getName().toString();
+        holder.matchLeague.setText(matchLeague);
+
         Opponents[] opponents = matches[position].getOpponents();
         if(opponents.length > 0){
 
@@ -65,24 +69,26 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
             }
 
-            Team team2  = opponents[1].getOpponent();
-            holder.matchTeam2.setText(team2.getName());
+            if(opponents.length == 2){
+                Team team2  = opponents[1].getOpponent();
+                holder.matchTeam2.setText(team2.getName());
 
-            if(team2.getImage_url() != null) {
-                Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                if(team2.getImage_url() != null) {
+                    Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                }
             }
         }
 
 
-//        holder.matchTitle.setOnClickListener(View -> {
-//
-//                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(context, MatchDetails.class);
-//                intent.putExtra("MatchDetail", matches[position]);
-//                context.startActivity(intent);
-//
-//        });
-//
+        holder.teamGroup.setOnClickListener(View -> {
+
+                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, MatchDetails.class);
+                intent.putExtra("MatchDetail", matches[position]);
+                context.startActivity(intent);
+
+        });
+
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
             int notificationPos = 0;
             public void onClick(View view) {
@@ -99,6 +105,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
                 }
+
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
                 String time = matches[position].getBegin_at().toString();
                 Log.d("MATCHTIME", "onClick: " + time);
@@ -148,6 +155,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         RelativeLayout parentLayout;
         RelativeLayout timeGroup;
+        RelativeLayout teamGroup;
         RelativeLayout notificationGroup;
 
         ImageView notificationIcon;
@@ -165,15 +173,14 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             matchTeam1Img     = itemView.findViewById(R.id.imageView_team1_img);
             matchTeam2Img     = itemView.findViewById(R.id.imageView_team2_img);
 
-
             notificationIcon  = itemView.findViewById(R.id.notification_icon);
             matchHour         = itemView.findViewById(R.id.textView_match_hour);
 
             parentLayout      = itemView.findViewById(R.id.parent_layout);
             timeGroup         = itemView.findViewById(R.id.time_group);
             notificationGroup = itemView.findViewById(R.id.notification_group);
+            teamGroup         = itemView.findViewById(R.id.team_group);
 
         }
     }
-
 }

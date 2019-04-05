@@ -14,6 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:background="@drawable/border_right"
             android:padding="5dp">
 
                 <TextView
@@ -22,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="{MMM}"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#a2a0a0"
                     android:textSize="15dp" />
 
                 <TextView
@@ -33,7 +34,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="{DD}"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#a2a0a0"
                     android:textSize="18dp" />
 
                 <TextView
@@ -44,10 +45,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="{WWW}"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#a2a0a0"
                     android:textSize="15dp" />
         </RelativeLayout>
-
 
 
         <TextView
@@ -58,57 +58,61 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="50dp"
             android:text="League Title"
-            android:textColor="@color/colorWhite"
+            android:textColor="#a2a0a0"
             android:textFontWeight="30"
             android:textSize="18dp" />
 
-        <ImageView
-            android:id="@+id/imageView_team1_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/textView_match_league_title"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <ImageView
-            android:id="@+id/imageView_team2_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/imageView_team1_img"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/textView_match_team1"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/team_group"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageView_team1_img"
-            android:layout_below="@id/textView_match_league_title"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="30"
-            android:text="Team X"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView_match_team2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageView_team2_img"
-            android:layout_below="@id/textView_match_team1"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="30"
-            android:text="Team Y"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:layout_below="@id/textView_match_league_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp">
+
+                <ImageView
+                    android:id="@+id/imageView_team1_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/imageView_team2_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/imageView_team1_img"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/textView_match_team1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imageView_team1_img"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="30"
+                    android:text="Team X"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView_match_team2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imageView_team2_img"
+                    android:layout_below="@id/textView_match_team1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="30"
+                    android:text="Team Y"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/notification_group"
@@ -133,7 +137,7 @@
                     android:layout_below="@+id/notification_icon"
                     android:layout_marginTop="20dp"
                     android:text="{HOURS}"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#a2a0a0"
                     android:textSize="12dp" />
         </RelativeLayout>
 
