@@ -4,30 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorMain"
     tools:context=".Instructions.SlideActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/slide_nav"
-        android:id="@+id/introFrame"
-        android:background="#090023">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
-        <fragment class="calendar.esports.Instructions.Slide1Fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </FrameLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/slide_nav"
+    <LinearLayout
+        android:layout_marginBottom="50sp"
+        android:id="@+id/pos_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/view_pager">
+        <ImageView
+            android:id="@+id/pos_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_radio_button_unchecked_orange_24dp"
+            />
+        <ImageView
+            android:id="@+id/pos_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_radio_button_unchecked_orange_24dp"
+            />
+        <ImageView
+            android:id="@+id/pos_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_radio_button_unchecked_orange_24dp"
+            />
+        <ImageView
+            android:id="@+id/pos_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_radio_button_unchecked_orange_24dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
         android:layout_alignParentBottom="true"
-        app:itemTextColor="@android:color/black"
-        android:background="@color/colorMain"
-        app:itemIconTint="@color/item_text"
-        app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Body1"
-        app:menu="@menu/dot_nav" />
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/skip_btn"
+            android:text="@string/skip_text"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

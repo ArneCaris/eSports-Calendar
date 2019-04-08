@@ -20,8 +20,8 @@
 
     <GridLayout
         android:layout_gravity="center"
-        android:columnCount="2"
-        android:rowCount="2"
+        android:columnCount="1"
+        android:rowCount="4"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
         android:padding="14dp"
@@ -31,7 +31,7 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/card1"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -40,11 +40,12 @@
             android:layout_marginRight="16dp"
             app:cardBackgroundColor="@color/colorWhite"
             app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
@@ -57,16 +58,10 @@
                     android:src="@drawable/cs_logo" />
 
             </LinearLayout>
-
-
-
-
-
-
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -74,11 +69,12 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
@@ -88,13 +84,12 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
-
-
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
+
         <android.support.v7.widget.CardView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -102,10 +97,11 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="5dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
                 <ImageView
@@ -116,8 +112,10 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
+
         <android.support.v7.widget.CardView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -125,10 +123,11 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="5dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:orientation="vertical">
                 <ImageView

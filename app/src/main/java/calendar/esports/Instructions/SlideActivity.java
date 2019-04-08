@@ -1,56 +1,99 @@
 package calendar.esports.Instructions;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import calendar.esports.MainActivity;
 import calendar.esports.R;
 
-public class SlideActivity extends AppCompatActivity {
+public class SlideActivity extends FragmentActivity {
 
-
+    MyPageAdapter pageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
-
         setContentView(R.layout.activity_slide);
 
-        BottomNavigationView introNav = findViewById(R.id.slide_nav);
+        List<Fragment> fragments = getFragments();
+        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
+        ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
+
+        pager.setAdapter(pageAdapter);
+
+        //Shows the instructions only once
+        /*SharedPreferences preferences = getSharedPreferences("ActivityPref", Context.MODE_PRIVATE);
+        if (preferences.getBoolean("activity_executed", false)) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            SharedPreferences.Editor ed = preferences.edit();
+            ed.putBoolean("activity_executed", true);
+            ed.commit();
+        }*/
 
 
-        final Slide1Fragment slide1Fragment = new Slide1Fragment();
-        final Slide2Fragment slide2Fragment = new Slide2Fragment();
-        final Slide3Fragment slide3Fragment = new Slide3Fragment();
-        final Slide4Fragment slide4Fragment = new Slide4Fragment();
 
-        introNav.setOnNavigationItemSelectedListener(menuItem -> {
-            int i = menuItem.getItemId();
-            if (i == R.id.slide1) {
-                setFragment(slide1Fragment);
-                return true;
-            } else if (i == R.id.slide2) {
-                setFragment(slide2Fragment);
-                return true;
-            } else if (i == R.id.slide3) {
-                setFragment(slide3Fragment);
-                return true;
-            } else if (i == R.id.slide4) {
-                setFragment(slide4Fragment);
-                return true;
-            }
-            return false;
+        Button btn = (Button) findViewById(R.id.skip_btn);
+        btn.setOnClickListener((View) -> {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         });
 
-
     }
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.introFrame, fragment);
-        fragmentTransaction.commit();
+
+    private  List<Fragment> getFragments(){
+        List<Fragment> fList = new ArrayList<>();
+        fList.add(new Slide1Fragment());
+        fList.add(new Slide2Fragment());
+        fList.add(new Slide3Fragment());
+        fList.add(new Slide4Fragment());
+        return fList;
+    }
+
+    private class MyPageAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fragments;
+
+        public MyPageAdapter(FragmentManager fm, List<Fragment> fragments) {
+            super(fm);
+            this.fragments = fragments;
+        }
+        @Override
+        public Fragment getItem(int position) {
+            ImageView pos1 = (ImageView) findViewById(R.id.pos_1);
+            ImageView pos2 = (ImageView) findViewById(R.id.pos_2);
+            ImageView pos3 = (ImageView) findViewById(R.id.pos_3);
+            ImageView pos4 = (ImageView) findViewById(R.id.pos_4);
+
+
+
+
+
+            return this.fragments.get(position);
+        }
+        @Override
+        public int getCount() {
+            return this.fragments.size();
+        }
+
     }
 }
