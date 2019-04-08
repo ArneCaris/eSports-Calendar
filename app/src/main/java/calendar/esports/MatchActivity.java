@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -59,9 +60,11 @@ public class MatchActivity extends AppCompatActivity {
 
             Map<Date, List<Match>> groupJson = listOfJson.stream()
                     .collect(Collectors.groupingBy(Match::getBegin_at));
+
+            TreeMap<Date, List<Match>> sorted = new TreeMap<>();
+            sorted.putAll(groupJson);
+
             groupJson.size();
-
-
             groupJson.values();
 
             Match[] matches   = listOfJson.toArray(json);

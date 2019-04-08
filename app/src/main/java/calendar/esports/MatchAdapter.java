@@ -81,7 +81,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
 
         holder.teamGroup.setOnClickListener(View -> {
-
                 Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MatchDetails.class);
                 intent.putExtra("MatchDetail", matches[position]);

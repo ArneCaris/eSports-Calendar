@@ -38,21 +38,20 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
-//        System.out.print(matchDetail);
+        System.out.print(matchDetail);
 //
-//        Opponents[] opponents = matchDetail.getOpponents();
-//        Team team  = opponents[i].getOpponent();
-//
-//        holder.teamName.setText(team.getName().toString());
-//        Picasso.get().load(team.getImage_url().toString()).into(holder.teamImage);
-//
-//        Result[] results = matchDetail.getResults();
-//        List<Result> listOfResults = Arrays.asList(results);
-//        Collections.reverse(listOfResults);
-//        Result[] reversed = listOfResults.toArray(results);
-//        holder.teamResult.setText(reversed[i].getScore().toString());
-//        holder.teamResult.setText(results[i].getScore().toString());
+        Opponents[] opponents = matchDetail.getOpponents();
+        Team team  = opponents[i].getOpponent();
 
+        holder.teamName.setText(team.getName().toString());
+        Picasso.get().load(team.getImage_url().toString()).into(holder.teamImage);
+
+        Result[] results = matchDetail.getResults();
+        List<Result> listOfResults = Arrays.asList(results);
+        Collections.reverse(listOfResults);
+        Result[] reversed = listOfResults.toArray(results);
+        holder.teamResult.setText(reversed[0].getScore().toString());
+        holder.teamResult.setText(reversed[reversed.length - 1].getScore().toString());
     }
 
     @Override
