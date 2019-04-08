@@ -1,14 +1,19 @@
 package calendar.esports;
 
 
+import android.content.Context;
 import android.app.ActionBar;
 import android.app.usage.UsageEvents;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +40,11 @@ import static android.support.constraint.Constraints.TAG;
  */
 public class CalendarFragment extends Fragment {
 
-
     CompactCalendarView compactCalendar;
     TextView eventsView;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - YYYY", Locale.getDefault());
     Event eventsViewText = null;
+    Context context;
 
     public CalendarFragment() {
         // Required empty public constructor
@@ -49,27 +54,29 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Long time = null;
-        if (getArguments() != null) {
-            time = getArguments().getLong("time");
-        }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
+        context = container.getContext();
         compactCalendar = (CompactCalendarView) view.findViewById(R.id.calendar_view);
         eventsView = (TextView) view.findViewById(R.id.events_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
 
-        Event ev1 = new Event(Color.RED, 1553842800000L, "test event");
-        compactCalendar.addEvent(ev1);
-        Event ev2 = new Event(Color.RED, 1553846400000L, "wow double event");
-        compactCalendar.addEvent(ev2);
-        Event ev3 = new Event(Color.RED, 1553932800000L, "oh boi its a triple");
-        compactCalendar.addEvent(ev3);
-        if (time != null) {
-            Event ev4 = new Event(Color.RED, time, "Auto added event with its time");
-            compactCalendar.addEvent(ev4);
-        }
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+
+        long time = pref.getLong("time", 0);
+
+        Log.d("ARGUMENTS", "onCreateView: " + time);
+
+        Log.d("SHAREDPREFS", "onCreateView: " + PreferenceManager.getDefaultSharedPreferences(context).getAll().size());
+
+        int i = PreferenceManager.getDefaultSharedPreferences(context).getAll().size();
+        int y = i + 1;
+        Event ev = new Event(Color.RED, time, "Auto added event with its time");
+        compactCalendar.addEvent(ev);
+
+
 
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {

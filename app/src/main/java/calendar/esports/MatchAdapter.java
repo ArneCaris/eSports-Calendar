@@ -2,7 +2,9 @@ package calendar.esports;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +29,7 @@ import java.util.Date;
 import static android.app.PendingIntent.getActivity;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
+
 
     private Match[] matches;
     private Context context;
@@ -87,15 +90,16 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     long timeInMilliseconds = mDate.getTime();
                     Log.d("MATCHTIME", "onClick: " + timeInMilliseconds);
 
-//                    Bundle args = new Bundle();
-//                    args.putLong("time", timeInMilliseconds);
-//                    CalendarFragment fragobj = new CalendarFragment();
-//                    fragobj.setArguments(args);
-//
+                    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+                    SharedPreferences.Editor editor = pref.edit();
+
+                    editor.putLong("time", timeInMilliseconds);
+                    editor.commit();
+
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.header_text, fragobj);
-//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.add(R.id.calendar_layout, fragobj);
+//                    fragmentTransaction.replace(R.id.calendar_view, fragobj);
 //                    fragmentTransaction.commit();
 
                 } catch (ParseException e) {
