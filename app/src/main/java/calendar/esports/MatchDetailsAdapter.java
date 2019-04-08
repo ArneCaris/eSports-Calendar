@@ -39,7 +39,7 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
         System.out.print(matchDetail);
-
+//
         Opponents[] opponents = matchDetail.getOpponents();
         Team team  = opponents[i].getOpponent();
 
@@ -50,9 +50,8 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
         List<Result> listOfResults = Arrays.asList(results);
         Collections.reverse(listOfResults);
         Result[] reversed = listOfResults.toArray(results);
-        holder.teamResult.setText(reversed[i].getScore().toString());
-//        holder.teamResult.setText(results[i].getScore().toString());
-
+        holder.teamResult.setText(reversed[0].getScore().toString());
+        holder.teamResult.setText(reversed[reversed.length - 1].getScore().toString());
     }
 
     @Override

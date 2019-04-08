@@ -1,0 +1,5 @@
+<root>
+    <item name='java.text.DateFormat java.util.Date parse(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable' />
+    </item>
+</root>

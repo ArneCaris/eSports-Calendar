@@ -2,17 +2,19 @@ package calendar.esports;
 import java.io.Serializable;
 import java.util.Date;
 
-class Match implements Serializable{
+class Match implements Serializable, Comparable<Match>{
     private Integer id;
     private String name;
     private Date begin_at;
+    private League league;
     private Opponents[] opponents;
     private Result[] results;
 
-    public Match(Integer id, String name, Date begin_at, Opponents[] opponents, Result[] results) {
+    public Match(Integer id, String name, Date begin_at, League league, Opponents[] opponents, Result[] results) {
         this.id = id;
         this.name = name;
         this.begin_at = begin_at;
+        this.league = league;
         this.opponents = opponents;
         this.results = results;
     }
@@ -55,6 +57,19 @@ class Match implements Serializable{
 
     public void setResults(Result[] results) {
         this.results = results;
+    }
+
+    @Override
+    public int compareTo(Match m) {
+        return getBegin_at().compareTo(m.getBegin_at());
+    }
+
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
     }
 }
 
@@ -155,3 +170,49 @@ class Result implements Serializable{
         this.score = score;
     }
 }
+
+class League implements Serializable{
+    private Integer id;
+    private String  name;
+    private String  image_url;
+
+    public League(Integer id, String name, String image_url) {
+        this.id = id;
+        this.name = name;
+        this.image_url = image_url;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+}
+
+//league: {
+//        url: "http://www.lolesports.com/en_US/lms/",
+//        slug: "league-of-legends-lms-taiwan",
+//        name: "LMS",
+//        modified_at: "2019-03-05T19:00:14Z",
+//        live_supported: true,
+//        image_url: "https://cdn.pandascore.co/images/league/image/295/b030bfca-cac7-11e7-92d4-0e6c723feec8.png",
+//        id: 295,
+//        }

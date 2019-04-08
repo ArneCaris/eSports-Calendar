@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="time_group" type="id" />
+    <item name="textView_match_month" type="id" />
+    <item name="textView_match_date" type="id" />
+</resources>

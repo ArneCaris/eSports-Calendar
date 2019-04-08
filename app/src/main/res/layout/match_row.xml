@@ -1,50 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
     android:backgroundTint="@color/colorWhite"
-    android:padding="15dp"
-    android:id="@+id/parent_layout">
+    android:orientation="horizontal"
+    android:padding="10dp">
 
-        <TextView
-            android:id="@+id/textView_match_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="30dp"
-            android:layout_centerVertical="true"
-            android:layout_weight="30"
-            android:textSize="18sp"
-            android:textColor="@color/colorWhite"
-            android:text="{TIME}" />
 
-        <TextView
-            android:id="@+id/textView_match_title"
+        <RelativeLayout
+            android:id="@+id/time_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:background="@drawable/border_right"
+            android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView_match_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="{MMM}"
+                    android:textColor="#a2a0a0"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_match_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_match_month"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="{DD}"
+                    android:textColor="#a2a0a0"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/textView_match_weekday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_match_date"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="{WWW}"
+                    android:textColor="#a2a0a0"
+                    android:textSize="15dp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textView_match_league_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
-            android:layout_toStartOf="@+id/notification_icon"
-            android:layout_toEndOf="@+id/textView_match_time"
-            android:layout_weight="30"
-            android:textSize="18sp"
-            android:textColor="@color/colorWhite"
-            android:text="X vs X" />
+            android:layout_marginStart="50dp"
+            android:text="League Title"
+            android:textColor="#a2a0a0"
+            android:textFontWeight="30"
+            android:textSize="18dp" />
 
-        <ImageView
-            android:id="@+id/notification_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentTop="true"
+        <RelativeLayout
+            android:id="@+id/team_group"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/textView_match_league_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp">
+
+                <ImageView
+                    android:id="@+id/imageView_team1_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/imageView_team2_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/imageView_team1_img"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/textView_match_team1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imageView_team1_img"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="30"
+                    android:text="Team X"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView_match_team2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imageView_team2_img"
+                    android:layout_below="@id/textView_match_team1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="30"
+                    android:text="Team Y"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/notification_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-
             android:layout_centerVertical="true"
-            android:layout_weight="1"
-            android:contentDescription="Notification"
-            android:src="@drawable/ic_notifications_black_24dp" />
+            android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/notification_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="Notification"
+                    android:src="@drawable/ic_notifications_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textView_match_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/notification_icon"
+                    android:layout_marginTop="20dp"
+                    android:text="{HOURS}"
+                    android:textColor="#a2a0a0"
+                    android:textSize="12dp" />
+        </RelativeLayout>
 
 </RelativeLayout>
