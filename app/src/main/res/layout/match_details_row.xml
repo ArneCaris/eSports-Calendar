@@ -10,12 +10,31 @@
     <RelativeLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_margin="5dp"
         android:id="@+id/playerTeam1">
+        <ImageView
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:id="@+id/playerImg1"
+            android:layout_margin="4dp"
+            android:src="@drawable/player_avatar"/>
+        <TextView
+            android:layout_toEndOf="@+id/playerImg1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/playerName1"
+            android:text="Player Name"
+            android:layout_marginStart="4dp"
+            android:textSize="15dp"/>
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/player1"
-            android:text="Player Name"/>
+            android:layout_below="@id/playerName1"
+            android:layout_toEndOf="@id/playerImg1"
+            android:id="@+id/playerRole1"
+            android:text="Player Role"
+            android:layout_marginStart="4dp"
+            android:textSize="12dp"/>
 
     </RelativeLayout>
 
@@ -23,13 +42,38 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:id="@+id/playerTeam2"
+        android:layout_margin="5dp"
         android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:id="@id/playerImg2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toEndOf="@id/playerName2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/player_avatar" />
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/player2"
-            android:text="Player Name"/>
+            android:id="@+id/playerName2"
+            android:text="Player Name"
+            android:layout_marginEnd="4dp"
+            android:textSize="15dp"/>
 
+        <TextView
+            android:id="@id/playerRole2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/playerName2"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_toStartOf="@id/playerImg2"
+            android:text="Player Role"
+            android:textSize="12dp" />
     </RelativeLayout>
 
 </RelativeLayout>

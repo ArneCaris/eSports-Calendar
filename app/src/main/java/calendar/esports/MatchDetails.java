@@ -71,6 +71,7 @@ public class MatchDetails extends AppCompatActivity {
     private void initMatchDetailRecylerView(Team team1, Team team2){
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setNestedScrollingEnabled(false);
         MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2);
         recyclerView.setAdapter(adapter);
     }

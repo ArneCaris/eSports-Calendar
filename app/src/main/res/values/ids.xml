@@ -3,4 +3,6 @@
     <item name="time_group" type="id" />
     <item name="textView_match_month" type="id" />
     <item name="textView_match_date" type="id" />
+    <item name="playerRole2" type="id" />
+    <item name="playerImg2" type="id" />
 </resources>
