@@ -1,6 +1,9 @@
 package calendar.esports;
 
 import android.os.StrictMode;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,6 +45,7 @@ public class MatchActivity extends AppCompatActivity {
 
         fetchJSON();
     }
+
 
 
     private void fetchJSON(){

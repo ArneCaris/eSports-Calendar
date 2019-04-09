@@ -23,6 +23,7 @@
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent"/>
 
+
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
@@ -33,8 +34,9 @@
             app:compactCalendarMultiEventIndicatorColor="#fff"
             app:compactCalendarTextColor="#fff"
             app:compactCalendarTextSize="15sp"
-            app:layout_constraintBottom_toTopOf="@id/events_view"
-            app:layout_constraintTop_toBottomOf="@+id/header_text" />
+            app:layout_constraintTop_toBottomOf="@+id/header_text"
+            app:layout_constraintBottom_toTopOf="@+id/events_view"/>
+
 
         <TextView
             android:id="@+id/events_view"

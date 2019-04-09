@@ -21,6 +21,7 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 {
 
     public TextView txtTitle,txtPubDate,txtContent;
+    public ImageView txtThumbnail;
     private ItemClickListener itemClickListener;
 
     public FeedViewHolder(View itemView) {
@@ -29,6 +30,7 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         txtTitle = (TextView)itemView.findViewById(R.id.textTitle);
         txtPubDate = (TextView)itemView.findViewById(R.id.textPubdate);
         txtContent = (TextView)itemView.findViewById(R.id.textContent);
+        txtThumbnail = (ImageView)itemView.findViewById(R.id.textImage);
 
         //Set Event
         itemView.setOnClickListener(this);
@@ -77,6 +79,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         holder.txtTitle.setText(rssObject.getItems().get(position).getTitle());
         holder.txtPubDate.setText(rssObject.getItems().get(position).getPubDate());
         holder.txtContent.setText(rssObject.getItems().get(position).getContent());
+        //holder.txtThumbnail.set(rssObject.getItems().get(position).getThumbnail());
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
