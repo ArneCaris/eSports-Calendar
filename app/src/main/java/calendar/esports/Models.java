@@ -100,16 +100,18 @@ class Opponents implements Serializable{
 }
 
 class Team implements Serializable{
-    private Integer id;
-    private String image_url;
-    private String slug;
-    private String name;
+    private Integer  id;
+    private String   image_url;
+    private String   slug;
+    private String   name;
+    private Player[] players;
 
-    public Team(Integer id, String image_url, String slug, String name) {
-        this.id = id;
+    public Team(Integer id, String image_url, String slug, String name, Player[] players) {
+        this.id        = id;
         this.image_url = image_url;
-        this.slug = slug;
-        this.name = name;
+        this.slug      = slug;
+        this.name      = name;
+        this.players   = players;
     }
 
     public Integer getId() {
@@ -143,6 +145,15 @@ class Team implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+
 }
 
 class Result implements Serializable{
@@ -207,12 +218,48 @@ class League implements Serializable{
     }
 }
 
-//league: {
-//        url: "http://www.lolesports.com/en_US/lms/",
-//        slug: "league-of-legends-lms-taiwan",
-//        name: "LMS",
-//        modified_at: "2019-03-05T19:00:14Z",
-//        live_supported: true,
-//        image_url: "https://cdn.pandascore.co/images/league/image/295/b030bfca-cac7-11e7-92d4-0e6c723feec8.png",
-//        id: 295,
-//        }
+class Player implements Serializable{
+    private int    id;
+    private String name;
+    private String image_url;
+    private String role;
+
+    public Player(int id, String name, String image_url, String role) {
+        this.id = id;
+        this.name = name;
+        this.image_url = image_url;
+        this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String img_url) {
+        this.image_url = img_url;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+}
