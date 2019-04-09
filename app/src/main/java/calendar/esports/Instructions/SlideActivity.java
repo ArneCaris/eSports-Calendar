@@ -3,7 +3,9 @@ package calendar.esports.Instructions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +18,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +41,11 @@ public class SlideActivity extends FragmentActivity {
         List<Fragment> fragments = getFragments();
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(pager, true);
 
         pager.setAdapter(pageAdapter);
+
 
         //Shows the instructions only once
         /*SharedPreferences preferences = getSharedPreferences("ActivityPref", Context.MODE_PRIVATE);
@@ -60,7 +68,6 @@ public class SlideActivity extends FragmentActivity {
         });
 
     }
-
     private  List<Fragment> getFragments(){
         List<Fragment> fList = new ArrayList<>();
         fList.add(new Slide1Fragment());
@@ -79,15 +86,6 @@ public class SlideActivity extends FragmentActivity {
         }
         @Override
         public Fragment getItem(int position) {
-            ImageView pos1 = (ImageView) findViewById(R.id.pos_1);
-            ImageView pos2 = (ImageView) findViewById(R.id.pos_2);
-            ImageView pos3 = (ImageView) findViewById(R.id.pos_3);
-            ImageView pos4 = (ImageView) findViewById(R.id.pos_4);
-
-
-
-
-
             return this.fragments.get(position);
         }
         @Override

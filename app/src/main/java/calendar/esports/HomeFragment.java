@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
 
         Button tb = (Button) v.findViewById(R.id.testBtn);
         tb.setOnClickListener((View) -> {
-            Intent b = new Intent(getActivity(), SlideActivity.class);
+            Intent b = new Intent(getActivity(), CreditsActivity.class);
             startActivity(b);
         });
 

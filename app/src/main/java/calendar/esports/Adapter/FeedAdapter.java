@@ -11,8 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import calendar.esports.Interface.ItemClickListener;
+import calendar.esports.Model.Item;
 import calendar.esports.Model.RSSObject;
+import calendar.esports.NewsActivity;
 import calendar.esports.R;
 
 
@@ -30,9 +35,8 @@ class FeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         txtTitle = (TextView)itemView.findViewById(R.id.textTitle);
         txtPubDate = (TextView)itemView.findViewById(R.id.textPubdate);
         txtContent = (TextView)itemView.findViewById(R.id.textContent);
-        txtThumbnail = (ImageView)itemView.findViewById(R.id.textImage);
+        txtThumbnail = (ImageView) itemView.findViewById(R.id.textImage);
 
-        //Set Event
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
     }
@@ -79,7 +83,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         holder.txtTitle.setText(rssObject.getItems().get(position).getTitle());
         holder.txtPubDate.setText(rssObject.getItems().get(position).getPubDate());
         holder.txtContent.setText(rssObject.getItems().get(position).getContent());
-        //holder.txtThumbnail.set(rssObject.getItems().get(position).getThumbnail());
+        //Picasso.get().load("https://esportsobserver.com/feed/").into(holder.txtThumbnail);
+
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
