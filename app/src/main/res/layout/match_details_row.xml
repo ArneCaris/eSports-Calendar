@@ -19,4 +19,17 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/playerTeam2"
+        android:layout_alignParentEnd="true">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/player2"
+            android:text="Player Name"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

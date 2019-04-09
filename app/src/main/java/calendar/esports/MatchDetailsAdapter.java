@@ -21,7 +21,6 @@ import static java.lang.System.in;
 
 public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapter.ViewHolder> {
 
-    private Match matchDetail;
     private Team  mteam1;
     private Team  mteam2;
     private Context context;
@@ -42,65 +41,41 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
 
-//        holder.team1Name.setText(mteam1.getName());
-//
-//        if(mteam1.getImage_url() != null) {
-//            Picasso.get().load(mteam1.getImage_url().toString()).into(holder.team1Image);
-//        }
-//
-//        holder.team2Name.setText(mteam2.getName());
-//
-//        if(mteam2.getImage_url() != null) {
-//            Picasso.get().load(mteam2.getImage_url().toString()).into(holder.team2Image);
-//        }
-
         Player[] playersTeam1  = mteam1.getPlayers();
+        Player[] playersTeam2  = mteam2.getPlayers();
         if(playersTeam1.length > 0){
             holder.player1.setText(playersTeam1[i].getName().toString() );
         }
 
-//            Result[] results = matchDetail.getResults();
-//            List<Result> listOfResults = Arrays.asList(results);
-//            Collections.reverse(listOfResults);
-//            Result[] reversed = listOfResults.toArray(results);
-//            holder.team1Result.setText(reversed[reversed.length - 1].getScore().toString());
-//            holder.team2Result.setText(reversed[0].getScore().toString());
-
+        if(playersTeam2.length > 0){
+            holder.player2.setText(playersTeam2[i].getName().toString());
+        }
 
     }
 
     @Override
     public int getItemCount() {
+        if(mteam1.getPlayers().length > mteam2.getPlayers().length){
+            return mteam2.getPlayers().length;
+        } else {
+            return mteam1.getPlayers().length;
 
-        return mteam1.getPlayers().length;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView  team1Name;
-        TextView  team1Result;
-        ImageView team1Image;
-        TextView  team2Name;
-        TextView  team2Result;
-        ImageView team2Image;
-
         TextView  player1;
+        TextView  player2;
 
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-//            team1Name         = itemView.findViewById(R.id.textView_team1_name);
-//            team1Result       = itemView.findViewById(R.id.textView_team1_result);
-//            team1Image        = itemView.findViewById(R.id.imageView_team1_img);
-
-//            team2Name         = itemView.findViewById(R.id.textView_team2_name);
-//            team2Result       = itemView.findViewById(R.id.textView_team2_result);
-//            team2Image        = itemView.findViewById(R.id.imageView_team2_img);
-
             parentLayout      = itemView.findViewById(R.id.parent_layout);
-
             player1           = itemView.findViewById(R.id.player1);
+            player2           = itemView.findViewById(R.id.player2);
+
         }
     }
 }
