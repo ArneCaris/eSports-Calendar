@@ -34,18 +34,6 @@
             android:text="Team X"
             android:textSize="15dp" />
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_marginStart="20dp"-->
-        <!--android:layout_marginEnd="20dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/textView_team1_result"-->
-        <!--android:textSize="25dp"-->
-        <!--android:text="0"/>-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -76,18 +64,6 @@
             android:text="Team Y"
             android:textSize="15dp" />
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_marginStart="20dp"-->
-        <!--android:layout_marginEnd="20dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/textView_team2_result"-->
-        <!--android:textSize="25dp"-->
-        <!--android:text="0"/>-->
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

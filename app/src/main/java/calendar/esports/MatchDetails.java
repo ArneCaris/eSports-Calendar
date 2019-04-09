@@ -70,10 +70,15 @@ public class MatchDetails extends AppCompatActivity {
 
     private void initMatchDetailRecylerView(Team team1, Team team2){
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setNestedScrollingEnabled(false);
+        CustomLinearLayoutManager customLayoutManager = new CustomLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+
+        recyclerView.setLayoutManager(customLayoutManager);
+
         MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2);
+
         recyclerView.setAdapter(adapter);
+
+//        recyclerView.stopScroll();
     }
 
     private void fetchJson(int team1Id, int team2Id){
