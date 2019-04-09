@@ -26,8 +26,7 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
     private Team  mteam2;
     private Context context;
 
-    public MatchDetailsAdapter(Context context, Match matchDetail, Team team1, Team team2) {
-        this.matchDetail = matchDetail;
+    public MatchDetailsAdapter(Context context, Team team1, Team team2) {
         this.context = context;
         this.mteam1 = team1;
         this.mteam2 = team2;
@@ -43,28 +42,22 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
 
-        Opponents[] opponents = matchDetail.getOpponents();
+//        holder.team1Name.setText(mteam1.getName());
+//
+//        if(mteam1.getImage_url() != null) {
+//            Picasso.get().load(mteam1.getImage_url().toString()).into(holder.team1Image);
+//        }
+//
+//        holder.team2Name.setText(mteam2.getName());
+//
+//        if(mteam2.getImage_url() != null) {
+//            Picasso.get().load(mteam2.getImage_url().toString()).into(holder.team2Image);
+//        }
 
-        if(opponents.length > 0){
-
-            Team team1  = opponents[0].getOpponent();
-            holder.team1Name.setText(mteam1.getName());
-
-            if(team1.getImage_url() != null) {
-                Picasso.get().load(mteam1.getImage_url().toString()).into(holder.team1Image);
-            }
-
-            if(opponents.length == 2){
-                Team team2  = opponents[1].getOpponent();
-                holder.team2Name.setText(mteam2.getName());
-
-                if(team2.getImage_url() != null) {
-                    Picasso.get().load(mteam2.getImage_url().toString()).into(holder.team2Image);
-                }
-            }
-
-            Player[] playersTeam1  = mteam1.getPlayers();
+        Player[] playersTeam1  = mteam1.getPlayers();
+        if(playersTeam1.length > 0){
             holder.player1.setText(playersTeam1[i].getName().toString() );
+        }
 
 //            Result[] results = matchDetail.getResults();
 //            List<Result> listOfResults = Arrays.asList(results);
@@ -72,14 +65,14 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
 //            Result[] reversed = listOfResults.toArray(results);
 //            holder.team1Result.setText(reversed[reversed.length - 1].getScore().toString());
 //            holder.team2Result.setText(reversed[0].getScore().toString());
-        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        Opponents[] opponents = matchDetail.getOpponents();
-        return opponents.length;
+
+        return mteam1.getPlayers().length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -97,13 +90,13 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            team1Name         = itemView.findViewById(R.id.textView_team1_name);
+//            team1Name         = itemView.findViewById(R.id.textView_team1_name);
 //            team1Result       = itemView.findViewById(R.id.textView_team1_result);
-            team1Image        = itemView.findViewById(R.id.imageView_team1_img);
+//            team1Image        = itemView.findViewById(R.id.imageView_team1_img);
 
-            team2Name         = itemView.findViewById(R.id.textView_team2_name);
+//            team2Name         = itemView.findViewById(R.id.textView_team2_name);
 //            team2Result       = itemView.findViewById(R.id.textView_team2_result);
-            team2Image        = itemView.findViewById(R.id.imageView_team2_img);
+//            team2Image        = itemView.findViewById(R.id.imageView_team2_img);
 
             parentLayout      = itemView.findViewById(R.id.parent_layout);
 

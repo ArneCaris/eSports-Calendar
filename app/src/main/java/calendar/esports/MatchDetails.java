@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,6 +25,11 @@ public class MatchDetails extends AppCompatActivity {
 
     Team team1;
     Team team2;
+    TextView team1Name;
+    ImageView team1Image;
+    TextView  team2Name;
+    ImageView team2Image;
+
     Match match;
 
     @Override
@@ -30,24 +38,40 @@ public class MatchDetails extends AppCompatActivity {
         setContentView(R.layout.activity_match_details);
 
         Serializable matchDetail = getIntent().getSerializableExtra("MatchDetail");
+        team1Name  = findViewById(R.id.textView_team1_name);
+        team2Name  = findViewById(R.id.textView_team2_name);
+        team1Image = findViewById(R.id.imageView_team1_img);
+        team2Image = findViewById(R.id.imageView_team2_img);
 
-        if (matchDetail instanceof  Match){
+        if (matchDetail instanceof  Match) {
             match = (Match) matchDetail;
             Opponents[] opponents = match.getOpponents();
-            Team team1 = opponents[0].getOpponent();
-            Team team2 = opponents[1].getOpponent();
+            if (opponents.length > 0) {
 
-            fetchJson(team1.getId(), team2.getId());
+                Team team1 = opponents[0].getOpponent();
+                team1Name.setText(team1.getName().toString());
+                if(team1.getImage_url() != null) {
+                    Picasso.get().load(team1.getImage_url().toString()).into(team1Image);
+                }
+
+                if(opponents.length == 2) {
+                    Team team2 = opponents[1].getOpponent();
+                    team2Name.setText(team2.getName().toString());
+                    if(team2.getImage_url() != null) {
+                        Picasso.get().load(team2.getImage_url().toString()).into(team2Image);
+                    }
+                    fetchJson(team1.getId(), team2.getId());
+                }
+            }
         }
-
     }
 
 
 
-    private void initMatchDetailRecylerView(Match matchDetail, Team team1, Team team2){
+    private void initMatchDetailRecylerView(Team team1, Team team2){
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, matchDetail, team1, team2);
+        MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2);
         recyclerView.setAdapter(adapter);
     }
 
@@ -74,7 +98,7 @@ public class MatchDetails extends AppCompatActivity {
             Team team2            = gson.fromJson(body2, Team.class);
 
             System.out.print(team2);
-            initMatchDetailRecylerView(match, team1, team2);
+            initMatchDetailRecylerView(team1, team2);
 
         } catch (IOException e) {
             e.printStackTrace();

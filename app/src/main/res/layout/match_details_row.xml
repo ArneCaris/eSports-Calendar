@@ -4,99 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="15dp"
+    android:layout_height="wrap_content"
     android:id="@+id/parent_layout">
 
     <RelativeLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/team1">
-
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="10dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/imageView_team1_img"/>
-
-    <TextView
-        android:id="@+id/textView_team1_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="80dp"
-        android:layout_toEndOf="@+id/imageView_team1_img"
-        android:layout_weight="30"
-        android:text="Team X"
-        android:textSize="15dp" />
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_marginStart="20dp"-->
-        <!--android:layout_marginEnd="20dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_weight="1"-->
-        <!--android:id="@+id/textView_team1_result"-->
-        <!--android:textSize="25dp"-->
-        <!--android:text="0"/>-->
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/team2"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/team1">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="10dp"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/imageView_team2_img"/>
-
-        <TextView
-            android:id="@+id/textView_team2_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="80dp"
-            android:layout_toEndOf="@+id/imageView_team2_img"
-            android:layout_weight="30"
-            android:text="Team Y"
-            android:textSize="15dp" />
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:layout_marginStart="20dp"-->
-            <!--android:layout_marginEnd="20dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_weight="1"-->
-            <!--android:id="@+id/textView_team2_result"-->
-            <!--android:textSize="25dp"-->
-            <!--android:text="0"/>-->
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/playerTeam1"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/team2">
-
+        android:id="@+id/playerTeam1">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
