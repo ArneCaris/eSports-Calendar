@@ -1,5 +1,7 @@
 package calendar.esports;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 
@@ -8,6 +10,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -134,6 +138,19 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
                     editor.putLong("time", timeInMilliseconds);
                     editor.commit();
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "CHANNEL_ID");
+                    builder.setAutoCancel(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                            .setWhen(System.currentTimeMillis())
+                            .setSmallIcon(R.drawable.lol)
+                            .setTicker("Dilip21")
+                            .setContentTitle("Default notification")
+                            .setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+                            .setContentInfo("Info");
+
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                    notificationManager.notify(1, builder.build());
 
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
