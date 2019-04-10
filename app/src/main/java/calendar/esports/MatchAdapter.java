@@ -120,6 +120,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     notificationPos = 0;
                 }
 
+
+
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
                 String time = matches[position].getBegin_at().toString();
                 Log.d("MATCHTIME", "onClick: " + time);
@@ -131,6 +133,24 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
                     SharedPreferences.Editor editor = pref.edit();
+
+                    if (opponents.length > 0) {
+                        Team team1 = opponents[0].getOpponent();
+                        if (opponents.length == 2) {
+                            Team team2 = opponents[1].getOpponent();
+
+                            Log.d("TEAMS", "onClick: " + matchHour);
+
+                            String info = team1.getName() + " VS " + team2.getName() + " - " + matchHour;
+
+                            editor.putString("info", info);
+                        } else {
+                            editor.putString("info", "Second team to be announced");
+                        }
+
+                    } else {
+                        editor.putString("info", "Teams to be announced");
+                    }
 
                     editor.putLong("time", timeInMilliseconds);
                     editor.commit();
