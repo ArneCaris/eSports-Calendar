@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    tools:context=".CreditsActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/linearLayout"
+        android:textColor="@color/colorWhite"
+        android:paddingBottom="5dp"
+        android:text="Developed by"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:paddingBottom="20sp"
+        android:orientation="horizontal">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96sp"
+            android:layout_height="96sp"
+            android:id="@+id/image1"
+            android:src="@drawable/tba"
+            app:civ_border_width="2sp"
+            app:civ_border_color="@color/colorOrange"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96sp"
+            android:layout_height="96sp"
+            android:id="@+id/image2"
+            android:src="@drawable/tba"
+            app:civ_border_width="2sp"
+            app:civ_border_color="@color/colorOrange"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96sp"
+            android:layout_height="96sp"
+            android:id="@+id/image3"
+            android:src="@drawable/tba"
+            app:civ_border_width="2sp"
+            app:civ_border_color="@color/colorOrange"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

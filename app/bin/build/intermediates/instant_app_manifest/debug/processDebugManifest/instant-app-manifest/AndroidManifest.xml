@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="calendar.esports"
+    android:targetSandboxVersion="2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="eSports Calendar"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="calendar.esports.Instructions.SlideActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="calendar.esports.NewsActivity" />
+        <activity
+            android:name="calendar.esports.MatchDetails"
+            android:label="Matches" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MatchActivity" />
+        </activity>
+        <activity
+            android:name="calendar.esports.MatchActivity"
+            android:label="Matches"
+            android:launchMode="singleTop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="calendar.esports.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="calendar.esports.com.squareup.picasso"
+            android:exported="false" />
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="calendar.esports.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
