@@ -72,15 +72,24 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             holder.matchTeam1.setText(team1.getName());
 
             if(team1.getImage_url() != null) {
-                Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+                    Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+            } else {
+                if (matches[position].getLeague().getImage_url() != null) {
+                    Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam1Img);
+                }
             }
 
             if(opponents.length == 2){
                 Team team2  = opponents[1].getOpponent();
                 holder.matchTeam2.setText(team2.getName());
 
+
                 if(team2.getImage_url() != null) {
-                    Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                     Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                } else {
+                    if (matches[position].getLeague().getImage_url() != null) {
+                        Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam2Img);
+                    }
                 }
             }
         }
