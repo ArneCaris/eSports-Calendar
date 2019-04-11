@@ -66,14 +66,14 @@ public class CalendarFragment extends Fragment {
 
 
         long time = pref.getLong("time", 0);
+        String info = pref.getString("info", "");
 
         Log.d("ARGUMENTS", "onCreateView: " + time);
 
         Log.d("SHAREDPREFS", "onCreateView: " + PreferenceManager.getDefaultSharedPreferences(context).getAll().size());
 
-        int i = PreferenceManager.getDefaultSharedPreferences(context).getAll().size();
-        int y = i + 1;
-        Event ev = new Event(Color.RED, time, "Auto added event with its time");
+
+        Event ev = new Event(Color.RED, time, info);
         compactCalendar.addEvent(ev);
 
 
