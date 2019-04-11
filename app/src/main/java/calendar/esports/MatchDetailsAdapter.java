@@ -7,21 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
-import static java.lang.System.in;
 
 public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapter.ViewHolder> {
 
@@ -65,7 +59,6 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
             if(playersTeam2[i].getImage_url() != null)
                 Picasso.get().load(playersTeam2[i].getImage_url().toString()).transform(transformation).transform(new CropCircleTransformation()).into(holder.playerImg2);
         }
-
     }
 
     @Override
@@ -74,7 +67,6 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
             return mteam2.getPlayers().length;
         } else {
             return mteam1.getPlayers().length;
-
         }
     }
 
@@ -98,7 +90,6 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
             playerRole2           = itemView.findViewById(R.id.playerRole2);
             playerImg1            = itemView.findViewById(R.id.playerImg1);
             playerImg2            = itemView.findViewById(R.id.playerImg2);
-
         }
     }
 }

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_nav"
         android:id="@+id/frame"
-        android:background="#090023">
+        android:background="@drawable/bg_gradient_dark">
 
         <fragment class="calendar.esports.HomeFragment"
             android:layout_width="match_parent"
