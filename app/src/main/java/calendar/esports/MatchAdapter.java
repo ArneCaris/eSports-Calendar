@@ -109,6 +109,10 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
             int notificationPos = 0;
+            private static final int MY_NOTIFICATION_ID=1;
+            NotificationManager notificationManager;
+            Notification myNotification;
+
             public void onClick(View view) {
 
                 if(notificationPos == 0){
@@ -117,6 +121,21 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
                     Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
                             .toString(), Toast.LENGTH_SHORT).show();
+
+                    myNotification = new NotificationCompat.Builder(context)
+                            .setContentTitle(matches[position].getLeague().getName().toString())
+                            .setContentText("Match starts")
+                            .setTicker("Notification!")
+//                            .setWhen(System.currentTimeMillis())
+//                            .setDefaults(Notification.DEFAULT_SOUND)
+//                            .setAutoCancel(true)
+                            .setSmallIcon(R.drawable.lol)
+                            .build();
+
+                    notificationManager =
+                            (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+//                    notify();
                 }
 
                 else if (notificationPos == 1){
@@ -139,18 +158,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     editor.putLong("time", timeInMilliseconds);
                     editor.commit();
 
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "CHANNEL_ID");
-                    builder.setAutoCancel(true)
-                            .setDefaults(Notification.DEFAULT_ALL)
-                            .setWhen(System.currentTimeMillis())
-                            .setSmallIcon(R.drawable.lol)
-                            .setTicker("Dilip21")
-                            .setContentTitle("Default notification")
-                            .setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-                            .setContentInfo("Info");
-
-                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                    notificationManager.notify(1, builder.build());
 
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

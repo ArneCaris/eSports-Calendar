@@ -1,12 +1,9 @@
 package calendar.esports;
 
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.Contacts.Data;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -68,17 +65,15 @@ public class MatchDetails extends AppCompatActivity {
 
 
 
-    private void initMatchDetailRecylerView(Team team1, Team team2){
+    private void initMatchDetailAdapterView(Team team1, Team team2){
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
-        CustomLinearLayoutManager customLayoutManager = new CustomLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-
-        recyclerView.setLayoutManager(customLayoutManager);
-
-        MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2);
-
+//        CustomLinearLayoutManager customLayoutManager = new CustomLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2); //, team2);
         recyclerView.setAdapter(adapter);
+        recyclerView.stopScroll();
 
-//        recyclerView.stopScroll();
     }
 
     private void fetchJson(int team1Id, int team2Id){
@@ -104,7 +99,7 @@ public class MatchDetails extends AppCompatActivity {
             Team team2            = gson.fromJson(body2, Team.class);
 
             System.out.print(team2);
-            initMatchDetailRecylerView(team1, team2);
+            initMatchDetailAdapterView(team1, team2);
 
         } catch (IOException e) {
             e.printStackTrace();

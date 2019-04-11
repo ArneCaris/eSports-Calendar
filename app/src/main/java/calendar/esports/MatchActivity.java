@@ -40,8 +40,12 @@ public class MatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
+        String game = getIntent().getStringExtra("game").toString();
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+//        getActionBar().setTitle("Matches • " + game);
+        getSupportActionBar().setTitle("Matches • " + game);
 
         fetchJSON();
     }
