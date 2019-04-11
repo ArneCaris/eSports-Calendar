@@ -35,10 +35,13 @@ public class MatchDetails extends AppCompatActivity {
         setContentView(R.layout.activity_match_details);
 
         Serializable matchDetail = getIntent().getSerializableExtra("MatchDetail");
-        team1Name  = findViewById(R.id.textView_team1_name);
-        team2Name  = findViewById(R.id.textView_team2_name);
-        team1Image = findViewById(R.id.imageView_team1_img);
-        team2Image = findViewById(R.id.imageView_team2_img);
+        team1Name                  = findViewById(R.id.textView_team1_name);
+        team2Name                  = findViewById(R.id.textView_team2_name);
+        team1Image                 = findViewById(R.id.imageView_team1_img);
+        team2Image                 = findViewById(R.id.imageView_team2_img);
+
+        RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
+        recyclerView2.setElevation(3);
 
         if (matchDetail instanceof  Match) {
             match = (Match) matchDetail;
