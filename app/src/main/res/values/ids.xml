@@ -5,4 +5,5 @@
     <item name="textView_match_date" type="id" />
     <item name="playerRole2" type="id" />
     <item name="playerImg2" type="id" />
+    <item name="team1" type="id" />
 </resources>

@@ -44,10 +44,33 @@ public class MatchActivity extends AppCompatActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-//        getActionBar().setTitle("Matches • " + game);
-        getSupportActionBar().setTitle("Matches • " + game);
 
+        getGame(game);
         fetchJSON();
+    }
+
+    private void getGame(String game) {
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        switch (game) {
+            case "lol":
+                getSupportActionBar().setIcon(R.drawable.lol);
+//                getSupportActionBar().setTitle("Matches • " + "League of Legend");
+                break;
+            case "ow":
+                getSupportActionBar().setIcon(R.drawable.ow_small);
+//                getSupportActionBar().setTitle("Matches • " + "Overwatch");
+                break;
+            case "dota2":
+                getSupportActionBar().setIcon(R.drawable.dota2_small);
+//                getSupportActionBar().setTitle("Matches • " + "Dota 2");
+                break;
+            case "csgo":
+                getSupportActionBar().setIcon(R.drawable.csgo_white);
+//                getSupportActionBar().setTitle("Matches • " + "CS: GO");
+                break;
+            default:
+                getSupportActionBar().setTitle("Matches");
+        }
     }
 
 

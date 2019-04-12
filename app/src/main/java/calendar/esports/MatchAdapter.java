@@ -70,41 +70,14 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.matchLeague.setText(matchLeague);
 
         Opponents[] opponents = matches[position].getOpponents();
-        if(opponents.length > 0){
 
-            Team team1  = opponents[0].getOpponent();
-            holder.matchTeam1.setText(team1.getName());
-
-            if(team1.getImage_url() != null) {
-                    Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
-            } else {
-                if (matches[position].getLeague().getImage_url() != null) {
-                    Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam1Img);
-                }
-            }
-
-            if(opponents.length == 2){
-                Team team2  = opponents[1].getOpponent();
-                holder.matchTeam2.setText(team2.getName());
-
-
-                if(team2.getImage_url() != null) {
-                     Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
-                } else {
-                    if (matches[position].getLeague().getImage_url() != null) {
-                        Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam2Img);
-                    }
-                }
-            }
-        }
-
+        displayMatch(opponents, holder, position);
 
         holder.teamGroup.setOnClickListener(View -> {
                 Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MatchDetails.class);
                 intent.putExtra("MatchDetail", matches[position]);
                 context.startActivity(intent);
-
         });
 
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
@@ -119,31 +92,13 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
                     notificationPos = 1;
 
-                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
-                            .toString(), Toast.LENGTH_SHORT).show();
-
-                    myNotification = new NotificationCompat.Builder(context)
-                            .setContentTitle(matches[position].getLeague().getName().toString())
-                            .setContentText("Match starts")
-                            .setTicker("Notification!")
-//                            .setWhen(System.currentTimeMillis())
-//                            .setDefaults(Notification.DEFAULT_SOUND)
-//                            .setAutoCancel(true)
-                            .setSmallIcon(R.drawable.lol)
-                            .build();
-
-                    notificationManager =
-                            (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-                    notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-//                    notify();
+                    notifyMatch(context, matches);
                 }
 
                 else if (notificationPos == 1){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
                 }
-
-
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
                 String time = matches[position].getBegin_at().toString();
@@ -178,7 +133,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     editor.putLong("time", timeInMilliseconds);
                     editor.commit();
 
-
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //                    fragmentTransaction.add(R.id.calendar_layout, fragobj);
@@ -188,10 +142,51 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+            }
 
+            private void notifyMatch(Context context, Match[] matches) {
+                myNotification = new NotificationCompat.Builder(context)
+                        .setContentTitle(matches[position].getLeague().getName().toString())
+                        .setContentText("Match starts")
+                        .setTicker("Notification!")
+                        .setWhen(System.currentTimeMillis())
+                        .setSmallIcon(R.drawable.lol)
+                        .build();
+
+                notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
             }
         });
 
+    }
+
+    private void displayMatch(Opponents[] opponents, ViewHolder holder, final int position) {
+        if(opponents.length > 0){
+
+            Team team1  = opponents[0].getOpponent();
+            holder.matchTeam1.setText(team1.getName());
+
+            if(team1.getImage_url() != null) {
+                Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+            } else {
+                if (matches[position].getLeague().getImage_url() != null) {
+                    Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam1Img);
+                }
+            }
+
+            if(opponents.length == 2){
+                Team team2  = opponents[1].getOpponent();
+                holder.matchTeam2.setText(team2.getName());
+
+                if(team2.getImage_url() != null) {
+                    Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                } else {
+                    if (matches[position].getLeague().getImage_url() != null) {
+                        Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam2Img);
+                    }
+                }
+            }
+        }
     }
 
 

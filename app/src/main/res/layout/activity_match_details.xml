@@ -6,60 +6,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MatchDetails"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@color/colorMain">
 
     <RelativeLayout
+        android:id="@+id/team1"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/team1">
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/imageView_team1_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignStart="@id/team1"
             android:src="@mipmap/ic_launcher"
-            android:id="@+id/imageView_team1_img"/>
+            tools:ignore="NotSibling" />
 
         <TextView
             android:id="@+id/textView_team1_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/imageView_team1_img"
-            android:textFontWeight="bold"
+            android:layout_below="@id/imageView_team1_img"
+            android:layout_alignStart="@id/imageView_team1_img"
+            android:layout_margin="5dp"
             android:text="Team X"
-            android:textSize="15dp" />
-
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:id="@+id/team2"
-        android:layout_alignParentEnd="true">
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="10dp"
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/imageView_team2_img"/>
+            android:id="@+id/imageView_team2_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/textView_team2_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_margin="10dp"
-            android:layout_toEndOf="@+id/imageView_team2_img"
-            android:textFontWeight="bold"
+            android:layout_below="@id/imageView_team2_img"
+            android:layout_alignEnd="@id/imageView_team2_img"
+            android:layout_margin="5dp"
+            android:paddingRight="5dp"
             android:text="Team Y"
-            android:textSize="15dp" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"/>
 
     </RelativeLayout>
 

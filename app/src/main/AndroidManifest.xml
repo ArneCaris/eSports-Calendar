@@ -31,8 +31,9 @@
         </activity>
         <activity
             android:name=".MatchActivity"
-            android:label="Matches"
+            android:label=""
             android:launchMode="singleTop">
+            <!--<icon android:src="@drawable/ic_launcher"></icon>-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
