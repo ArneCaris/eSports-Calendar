@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import android.support.annotation.NonNull;
@@ -26,13 +25,19 @@ import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 import static android.app.PendingIntent.getActivity;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
 
 
+    Set<String> set = new HashSet<>();
+    Set<String> setInfo = new HashSet<>();
     private Match[] matches;
     private Context context;
 
@@ -80,11 +85,15 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 context.startActivity(intent);
         });
 
+
+
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
             int notificationPos = 0;
+
             private static final int MY_NOTIFICATION_ID=1;
             NotificationManager notificationManager;
             Notification myNotification;
+
 
             public void onClick(View view) {
 
@@ -102,11 +111,11 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
                 String time = matches[position].getBegin_at().toString();
-                Log.d("MATCHTIME", "onClick: " + time);
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                ArrayList<String> times = new ArrayList<>();
                 try {
-                    Date mDate = sdf.parse(time);
-                    long timeInMilliseconds = mDate.getTime();
+                    Date date = sdf.parse(time);
+                    Long timeInMilliseconds = date.getTime();
                     Log.d("MATCHTIME", "onClick: " + timeInMilliseconds);
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -117,20 +126,22 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                         if (opponents.length == 2) {
                             Team team2 = opponents[1].getOpponent();
 
-                            Log.d("TEAMS", "onClick: " + matchHour);
-
                             String info = team1.getName() + " VS " + team2.getName() + " - " + matchHour;
 
-                            editor.putString("info", info);
+                            setInfo.add(info);
                         } else {
-                            editor.putString("info", "Second team to be announced");
+                            String info = team1.getName() + " VS TBA" + " - " + matchHour;
+                            setInfo.add(info);
                         }
 
                     } else {
-                        editor.putString("info", "Teams to be announced");
+                        String info = "TBA VS TBA - " + matchHour;
+                        setInfo.add(info);
                     }
 
-                    editor.putLong("time", timeInMilliseconds);
+                    set.add(timeInMilliseconds.toString());
+                    editor.putStringSet("key2", setInfo);
+                    editor.putStringSet("key", set);
                     editor.commit();
 
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();

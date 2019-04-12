@@ -43,6 +43,28 @@
             android:layout_height="wrap_content"
             android:text="test"
             android:layout_below="@+id/newsBtn"/>
+        <TextView
+            android:id="@+id/achiText"
+            android:layout_above="@+id/achi_view"
+            android:text="Achievements"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:id="@+id/achi_view"
+            android:padding="5dp"
+            android:background="@drawable/border_full"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/achi_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fingerprint_black_24dp"/>
+
+        </RelativeLayout>
     </RelativeLayout>
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import calendar.esports.Interface.ItemClickListener;
 import calendar.esports.Model.Item;
+import calendar.esports.Model.Feed;
 import calendar.esports.Model.RSSObject;
 import calendar.esports.NewsActivity;
 import calendar.esports.R;
@@ -83,7 +84,10 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedViewHolder> {
         holder.txtTitle.setText(rssObject.getItems().get(position).getTitle());
         holder.txtPubDate.setText(rssObject.getItems().get(position).getPubDate());
         holder.txtContent.setText(rssObject.getItems().get(position).getContent());
-        //Picasso.get().load("https://esportsobserver.com/feed/").into(holder.txtThumbnail);
+        Picasso.get()
+                .load(rssObject.getItems().get(position).getThumbnail())
+                .resize(1000, 1000)
+                .into(holder.txtThumbnail);
 
 
         holder.setItemClickListener(new ItemClickListener() {
