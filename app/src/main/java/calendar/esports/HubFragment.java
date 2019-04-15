@@ -32,7 +32,7 @@ public class HubFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hub, container, false);
 
 
-        ImageView csgo = (ImageView) view.findViewById(R.id.csgo);
+        CardView csgo = (CardView) view.findViewById(R.id.csgo);
         csgo.setOnClickListener((View) -> {
             String game = "csgo";
             Intent i = new Intent(getActivity(), MatchActivity.class);
@@ -40,7 +40,7 @@ public class HubFragment extends Fragment {
             startActivity(i);
         });
 
-        ImageView lol = (ImageView) view.findViewById(R.id.lol);
+        CardView lol = (CardView) view.findViewById(R.id.lol);
         lol.setOnClickListener((View) -> {
             String game = "lol";
             Intent i = new Intent(getActivity(), MatchActivity.class);
@@ -48,7 +48,7 @@ public class HubFragment extends Fragment {
             startActivity(i);
         });
 
-        ImageView dota2 = (ImageView) view.findViewById(R.id.dota2);
+        CardView dota2 = (CardView) view.findViewById(R.id.dota2);
         dota2.setOnClickListener((View) -> {
             String game = "dota2";
             Intent i = new Intent(getActivity(), MatchActivity.class);
@@ -56,7 +56,7 @@ public class HubFragment extends Fragment {
             startActivity(i);
         });
 
-        ImageView ow = (ImageView) view.findViewById(R.id.ow);
+        CardView ow = (CardView) view.findViewById(R.id.ow);
         ow.setOnClickListener((View ) -> {
             String game = "ow";
             Intent i = new Intent(getActivity(), MatchActivity.class);

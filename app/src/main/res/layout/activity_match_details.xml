@@ -41,7 +41,7 @@
 
     <RelativeLayout
         android:id="@+id/team2"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:background="?attr/selectableItemBackground"
@@ -52,7 +52,6 @@
             android:id="@+id/imageView_team2_img"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
@@ -60,7 +59,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageView_team2_img"
-            android:layout_alignEnd="@id/imageView_team2_img"
             android:layout_margin="5dp"
             android:paddingRight="5dp"
             android:text="Team Y"
@@ -75,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/team2"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"/>
+        android:padding="5dp"
+        android:layout_marginTop="40dp"/>
 
 </RelativeLayout>
