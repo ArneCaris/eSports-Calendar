@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -156,7 +157,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
                 String time = matches[position].getBegin_at().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
                 ArrayList<String> times = new ArrayList<>();
                 try {
                     Date date = sdf.parse(time);
@@ -170,15 +171,18 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                         Team team1 = opponents[0].getOpponent();
                         if (opponents.length == 2) {
                             Team team2 = opponents[1].getOpponent();
-
                             String info = team1.getName() + " VS " + team2.getName() + " - " + matchHour;
-
                             setInfo.add(info);
                         } else {
-                            String info = team1.getName() + " VS TBA" + " - " + matchHour;
-                            setInfo.add(info);
+                            if (team1.getName() != null) {
+                                String info = team1.getName() + " VS TBA" + " - " + matchHour;
+                                setInfo.add(info);
+                            } else {
+                                Team team2 = opponents[1].getOpponent();
+                                String info = "TBA VS " + team2.getName() + " - " + matchHour;
+                                setInfo.add(info);
+                            }
                         }
-
                     } else {
                         String info = "TBA VS TBA - " + matchHour;
                         setInfo.add(info);
