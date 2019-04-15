@@ -23,11 +23,13 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -131,14 +133,20 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
                             .toString(), Toast.LENGTH_SHORT).show();
 
+                    String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
+
+                    String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
+                                        + timeOfEvent);
+
                     myNotification = new NotificationCompat.Builder(context)
                             .setContentTitle(matches[position].getLeague().getName().toString())
-                            .setContentText("Match starts")
+                            .setContentText(message)
+                            .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                             .setTicker("Notification!")
 //                            .setWhen(System.currentTimeMillis())
 //                            .setDefaults(Notification.DEFAULT_SOUND)
 //                            .setAutoCancel(true)
-                            .setSmallIcon(R.drawable.lol)
+                            .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
                             .build();
 
                     notificationManager =
@@ -155,8 +163,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
+
                 String time = matches[position].getBegin_at().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.getDefault());
                 ArrayList<String> times = new ArrayList<>();
                 try {
                     Date date = sdf.parse(time);
@@ -170,15 +179,18 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                         Team team1 = opponents[0].getOpponent();
                         if (opponents.length == 2) {
                             Team team2 = opponents[1].getOpponent();
-
                             String info = team1.getName() + " VS " + team2.getName() + " - " + matchHour;
-
                             setInfo.add(info);
                         } else {
-                            String info = team1.getName() + " VS TBA" + " - " + matchHour;
-                            setInfo.add(info);
+                            if (team1.getName() != null) {
+                                String info = team1.getName() + " VS TBA" + " - " + matchHour;
+                                setInfo.add(info);
+                            } else {
+                                Team team2 = opponents[1].getOpponent();
+                                String info = "TBA VS " + team2.getName() + " - " + matchHour;
+                                setInfo.add(info);
+                            }
                         }
-
                     } else {
                         String info = "TBA VS TBA - " + matchHour;
                         setInfo.add(info);
@@ -188,7 +200,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     editor.putStringSet("key2", setInfo);
                     editor.putStringSet("key", set);
                     editor.commit();
-
 
 //                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
