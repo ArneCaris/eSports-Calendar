@@ -3,6 +3,7 @@ package calendar.esports;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
@@ -29,6 +30,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import static android.content.Context.ALARM_SERVICE;
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
 
@@ -151,32 +155,31 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             }
 
             private void notifyMatch(Context context, Match[] matches) {
-//                final int MY_NOTIFICATION_ID=1;
-//                NotificationManager notificationManager;
-//                Notification myNotification;
-//
-//
-//                myNotification = new NotificationCompat.Builder(context)
-//                        .setContentTitle(matches[position].getLeague().getName().toString())
-//                        .setContentText("Match starts")
-//                        .setTicker("Notification!")
-//                        .setWhen(System.currentTimeMillis())
-//                        .setSmallIcon(R.drawable.lol)
-//                        .build();
-//
-//                notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-//                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
 
-//                EditText text = findViewById(R.id.time);
-//                int i = Integer.parseInt(text.getText().toString());
-//                Intent intent = new Intent(this, MyBroadcastReceiver.class);
-//                PendingIntent pendingIntent = PendingIntent.getBroadcast(
-//                        this.getApplicationContext(), 234324243, intent, 0);
-//                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
-//                        + (i * 1000), pendingIntent);
-//                Toast.makeText(this, "Alarm set in " + i + " seconds",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, MyBroadcastReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
+                234324243, intent, 0);
+
+//                getMilis("0231");
+
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+                + (position * 1000), pendingIntent);
             }
+
+//            private long getMilis(String milis) {
+//
+//                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+//                Date date = null;
+//                try {
+//                    date = sdf.parse(milis);
+//                    Long timeInMilliseconds = date.getTime();
+//                    return timeInMilliseconds;
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//                return 0;
+//            }
         });
 
     }
