@@ -1,5 +1,6 @@
 package calendar.esports;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -10,7 +11,6 @@ import android.preference.PreferenceManager;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,11 +32,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-
-import static android.app.PendingIntent.getActivity;
-
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
-
 
     Set<String> set = new HashSet<>();
     Set<String> setInfo = new HashSet<>();
@@ -52,7 +48,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.match_row, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
-
         return holder;
     }
 
@@ -77,58 +72,36 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.matchLeague.setText(matchLeague);
 
         Opponents[] opponents = matches[position].getOpponents();
-        if(opponents.length > 0){
 
-            Team team1  = opponents[0].getOpponent();
-            holder.matchTeam1.setText(team1.getName());
+        displayMatch(opponents, holder, position);
 
-            if(team1.getImage_url() != null) {
-                    Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
-            } else {
-                if (matches[position].getLeague().getImage_url() != null) {
-                    Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam1Img);
-                }
+        holder.teamGroup.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
+                return false;
             }
-
-            if(opponents.length == 2){
-                Team team2  = opponents[1].getOpponent();
-                holder.matchTeam2.setText(team2.getName());
-
-
-                if(team2.getImage_url() != null) {
-                     Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
-                } else {
-                    if (matches[position].getLeague().getImage_url() != null) {
-                        Picasso.get().load(matches[position].getLeague().getImage_url().toString()).into(holder.matchTeam2Img);
-                    }
-                }
-            }
-        }
-
+        });
 
         holder.teamGroup.setOnClickListener(View -> {
-                Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MatchDetails.class);
                 intent.putExtra("MatchDetail", matches[position]);
                 context.startActivity(intent);
-
         });
 
-
-
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
-            int notificationPos = 0;
 
+            private int notificationPos = 0;
             private static final int MY_NOTIFICATION_ID=1;
             NotificationManager notificationManager;
             Notification myNotification;
-
 
             public void onClick(View view) {
 
                 if(notificationPos == 0){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
                     notificationPos = 1;
+
 
                     Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
                             .toString(), Toast.LENGTH_SHORT).show();
@@ -153,14 +126,15 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                             (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
                     notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
 //                    notify();
+
+
+
                 }
 
                 else if (notificationPos == 1){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
                 }
-
-
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
 
@@ -210,10 +184,73 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+            }
 
+            private void notifyMatch(Context context, Match[] matches) {
+//                final int MY_NOTIFICATION_ID=1;
+//                NotificationManager notificationManager;
+//                Notification myNotification;
+//
+//
+//                myNotification = new NotificationCompat.Builder(context)
+//                        .setContentTitle(matches[position].getLeague().getName().toString())
+//                        .setContentText("Match starts")
+//                        .setTicker("Notification!")
+//                        .setWhen(System.currentTimeMillis())
+//                        .setSmallIcon(R.drawable.lol)
+//                        .build();
+//
+//                notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+//                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+
+//                EditText text = findViewById(R.id.time);
+//                int i = Integer.parseInt(text.getText().toString());
+//                Intent intent = new Intent(this, MyBroadcastReceiver.class);
+//                PendingIntent pendingIntent = PendingIntent.getBroadcast(
+//                        this.getApplicationContext(), 234324243, intent, 0);
+//                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+//                        + (i * 1000), pendingIntent);
+//                Toast.makeText(this, "Alarm set in " + i + " seconds",Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    private void displayMatch(Opponents[] opponents, ViewHolder holder, final int position) {
+        if(opponents.length > 0){
+
+            Team team1  = opponents[0].getOpponent();
+//            holder.matchTeam1.setText(team1.getName());
+
+            if (team1.getName() != null) {
+                holder.matchTeam1.setText(team1.getName());
+            } else {
+                holder.matchTeam1.setText("TBD");
+            }
+
+            if(team1.getImage_url() != null) {
+                Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+            } else {
+                holder.matchTeam1Img.setAlpha(0);
+            }
+
+            if(opponents.length == 2){
+                Team team2  = opponents[1].getOpponent();
+
+                if (team2.getName() != null) {
+                    holder.matchTeam2.setText(team2.getName());
+                } else {
+                    holder.matchTeam2.setText("TBD");
+                }
+
+                if(team2.getImage_url() != null) {
+                    Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                } else {
+                    holder.matchTeam2Img.setAlpha(0);
+                }
+            }
+        }
     }
 
 

@@ -40,20 +40,24 @@ public class MatchDetails extends AppCompatActivity {
         team1Image                 = findViewById(R.id.imageView_team1_img);
         team2Image                 = findViewById(R.id.imageView_team2_img);
 
-        RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
-        recyclerView2.setElevation(3);
+        initTeamView(matchDetail);
+    }
 
+    private void initTeamView(Serializable matchDetail) {
         if (matchDetail instanceof  Match) {
+
+            String matchInfo = ((Match) matchDetail).getName();
+            getSupportActionBar().setTitle(matchInfo);
+
             match = (Match) matchDetail;
             Opponents[] opponents = match.getOpponents();
             if (opponents.length > 0) {
-
                 Team team1 = opponents[0].getOpponent();
                 team1Name.setText(team1.getName().toString());
+
                 if(team1.getImage_url() != null) {
                     Picasso.get().load(team1.getImage_url().toString()).into(team1Image);
                 }
-
                 if(opponents.length == 2) {
                     Team team2 = opponents[1].getOpponent();
                     team2Name.setText(team2.getName().toString());
@@ -67,16 +71,12 @@ public class MatchDetails extends AppCompatActivity {
     }
 
 
-
     private void initMatchDetailAdapterView(Team team1, Team team2){
-
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
-//        CustomLinearLayoutManager customLayoutManager = new CustomLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MatchDetailsAdapter adapter      = new MatchDetailsAdapter(this, team1, team2); //, team2);
         recyclerView.setAdapter(adapter);
         recyclerView.stopScroll();
-
     }
 
     private void fetchJson(int team1Id, int team2Id){
@@ -107,6 +107,5 @@ public class MatchDetails extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

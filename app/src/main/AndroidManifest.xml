@@ -13,6 +13,8 @@
         android:label="eSports Calendar"
         android:roundIcon="@drawable/estream"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CreditsActivity"></activity>
         <activity android:name=".Instructions.SlideActivity">
@@ -38,8 +40,9 @@
         </activity>
         <activity
             android:name=".MatchActivity"
-            android:label="Matches"
+            android:label=""
             android:launchMode="singleTop">
+            <!--<icon android:src="@drawable/ic_launcher"></icon>-->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
