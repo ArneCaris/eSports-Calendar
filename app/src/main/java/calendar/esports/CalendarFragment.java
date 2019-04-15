@@ -18,8 +18,11 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Calendar;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -31,6 +34,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
@@ -45,8 +50,9 @@ public class CalendarFragment extends Fragment {
 
 
     CompactCalendarView compactCalendar;
+    TextView headerTxt;
     TextView eventsView;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - YYYY", Locale.getDefault());
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - YYYY", Locale.ENGLISH);
     Event eventsViewText = null;
     Context context;
 
@@ -67,16 +73,14 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Log.d("LISTCHECK", "onCreateView: " + listTime);
-        Log.d("LISTCHECK", "onCreateView: " + listInfo);
 
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-
         context = container.getContext();
         compactCalendar = (CompactCalendarView) view.findViewById(R.id.calendar_view);
         eventsView = (TextView) view.findViewById(R.id.events_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
+        headerTxt = (TextView) view.findViewById(R.id.header_text);
+        headerTxt.setText(dateFormatMonth.format(compactCalendar.getFirstDayOfCurrentMonth()));
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = pref.edit();
@@ -122,8 +126,6 @@ public class CalendarFragment extends Fragment {
                 compactCalendar.addEvent(event2);
             }
 
-
-
             for (int i = 0; i < listTime.size(); i++) {
 
                 Long date = Long.valueOf(listTime.get(i));
@@ -163,7 +165,8 @@ public class CalendarFragment extends Fragment {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-
+                headerTxt.setText(dateFormatMonth.format(firstDayOfNewMonth));
+                Log.d(TAG, "Month was scrolled to: " + firstDayOfNewMonth);
             }
         });
         return view;

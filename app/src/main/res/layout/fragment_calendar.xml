@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:text="@string/header_text"
             android:textColor="#FFF"
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -45,7 +44,7 @@
             android:id="@+id/events_view"
             android:layout_width="match_parent"
             android:layout_height="255dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendar_view" />
