@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 public class AlarmNotificationService extends IntentService {
-    public final int MY_NOTIFICATION_ID=1;
+    public static final int MY_NOTIFICATION_ID=1;
     private NotificationManager notificationManager;
+
+    private String title;
+    private String content;
 
     public AlarmNotificationService() {
         super("AlarmNotificationService");
@@ -31,7 +34,7 @@ public class AlarmNotificationService extends IntentService {
                         .setContentTitle(msg)
                         .setContentText("Match starts")
                         .setTicker("Notification!")
-                        .setWhen(System.currentTimeMillis())
+//                        .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.drawable.lol)
                         .build();
 

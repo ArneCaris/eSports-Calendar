@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -94,18 +95,22 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
 
             private int notificationPos = 0;
+            Intent intent = new Intent(context, MyBroadcastReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
+                    234324243, intent, 0);
 
             public void onClick(View view) {
 
                 if(notificationPos == 0){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
                     notificationPos = 1;
-                    notifyMatch(context, matches);
+                    notifyMatch(context, matches, position);
                 }
 
                 else if (notificationPos == 1){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
+                    cancelMatchNotification(context);
                 }
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
@@ -154,32 +159,42 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 }
             }
 
-            private void notifyMatch(Context context, Match[] matches) {
+            private void cancelMatchNotification(Context context) {
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
 
-                Intent intent = new Intent(context, MyBroadcastReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
-                234324243, intent, 0);
+                NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancel(AlarmNotificationService.MY_NOTIFICATION_ID);
 
-//                getMilis("0231");
-
-                AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
-                + (position * 1000), pendingIntent);
             }
 
-//            private long getMilis(String milis) {
-//
-//                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-//                Date date = null;
-//                try {
-//                    date = sdf.parse(milis);
-//                    Long timeInMilliseconds = date.getTime();
+            private void notifyMatch(Context context, Match[] matches, int position) {
+
+                int sec = getInterval(matches[position].getBegin_at().toString());
+
+                Calendar cal = Calendar.getInstance();
+                cal.add(sec, 0);
+
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis() - 18360, pendingIntent);
+            }
+
+            private int getInterval(String milis) {
+
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                Date date = null;
+                try {
+                    date = sdf.parse(milis);
+                    Long timeInMilliseconds = date.getTime();
+                    Log.d("getMilis", "getMilis: " + timeInMilliseconds);
+                    return timeInMilliseconds.intValue() / 60000;
+
 //                    return timeInMilliseconds;
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                return 0;
-//            }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }
         });
 
     }
