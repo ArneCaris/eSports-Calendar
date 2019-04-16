@@ -47,7 +47,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/csgo_white_small" />
+                        android:src="@drawable/game_logo2" />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -142,7 +142,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/dota2_small" />
+                        android:src="@drawable/game_logo3" />
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ow_small" />
+                        android:src="@drawable/game_logo4" />
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"

@@ -1,30 +1,22 @@
 package calendar.esports;
 
 import android.os.StrictMode;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import okhttp3.OkHttpClient;
@@ -56,10 +48,10 @@ public class MatchActivity extends AppCompatActivity {
                 getSupportActionBar().setIcon(R.drawable.lol);
                 break;
             case "ow":
-                getSupportActionBar().setIcon(R.drawable.ow_small);
+                getSupportActionBar().setIcon(R.drawable.game_logo4);
                 break;
             case "dota2":
-                getSupportActionBar().setIcon(R.drawable.dota2_small);
+                getSupportActionBar().setIcon(R.drawable.game_logo3);
                 break;
             case "csgo":
                 getSupportActionBar().setIcon(R.drawable.csgo_white);
@@ -93,7 +85,7 @@ public class MatchActivity extends AppCompatActivity {
             groupJson.values();
 
             Match[] matches   = listOfJson.toArray(json);
-            initMatchRecyclerView(matches);
+            initMatchRecyclerView(matches, game);
         }
         catch (IOException e) {
             Log.d(TAG, "fetchJSON: There is errors" + e);
@@ -101,10 +93,10 @@ public class MatchActivity extends AppCompatActivity {
         }
     }
 
-    private void initMatchRecyclerView(Match[] matches){
+    private void initMatchRecyclerView(Match[] matches, String games){
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MatchAdapter adapter      = new MatchAdapter(this, matches);
+        MatchAdapter adapter      = new MatchAdapter(this, matches, games);
         recyclerView.setAdapter(adapter);
     }
 

@@ -142,11 +142,11 @@ public class CalendarFragment extends Fragment {
             editor.commit();
         }
 
-        headerTxt.setOnClickListener((View) -> {
-            compactCalendar.removeAllEvents();
-            //pref.edit().remove().apply();
 
-        });
+//        headerTxt.setOnClickListener((View) -> {
+//            editor.clear();
+//        });
+
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override

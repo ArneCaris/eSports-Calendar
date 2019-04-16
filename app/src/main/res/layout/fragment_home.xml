@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorMain"
     tools:context=".HomeFragment">
 
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/hubTxt"
+            android:id="@+id/hub_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -28,23 +29,47 @@
             android:text="@string/app_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/hubTxt"/>
-        <TextView
-            android:id="@+id/newsBtn"
+            android:layout_below="@+id/hub_txt"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/recommendTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:id="@+id/news_card1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp"
+            android:layout_height="100dp"
+            app:cardBackgroundColor="@color/colorMain"
+            android:background="@drawable/border_full"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:src="@drawable/teo_wide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+
+        <!--<RelativeLayout
+            android:id="@+id/news_view1"
             android:layout_below="@+id/recommendTxt"
-            android:text="View News"/>
-        <Button
-            android:id="@+id/testBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test"
-            android:layout_below="@+id/newsBtn"/>
+            android:background="@drawable/border_full"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="The Esports Observer"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>-->
         <TextView
-            android:id="@+id/achiText"
+            android:id="@+id/achi_text"
             android:layout_above="@+id/achi_view"
             android:text="Achievements"
             android:textColor="@color/colorWhite"
