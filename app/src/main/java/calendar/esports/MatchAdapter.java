@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import android.support.annotation.NonNull;
@@ -96,54 +97,19 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
 
-            private int notificationPos = 0;
-<<<<<<< HEAD
-            Intent intent = new Intent(context, MyBroadcastReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
-                    234324243, intent, 0);
-=======
-            private static final int MY_NOTIFICATION_ID=1;
-            NotificationManager notificationManager;
-            Notification myNotification;
->>>>>>> 2320c66bfddeccf2f97d4c62dee999931476579c
+            private int           notificationPos = 0;
+            private Intent        intent;
+            private PendingIntent pendingIntent;
 
             public void onClick(View view) {
+                intent = new Intent(context, MyBroadcastReceiver.class);
+                pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
+                        234324243, intent, 0);
 
                 if(notificationPos == 0){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
                     notificationPos = 1;
-<<<<<<< HEAD
                     notifyMatch(context, matches, position);
-=======
-
-
-                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
-                            .toString(), Toast.LENGTH_SHORT).show();
-
-                    String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
-
-                    String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
-                                        + timeOfEvent);
-
-                    myNotification = new NotificationCompat.Builder(context)
-                            .setContentTitle(matches[position].getLeague().getName().toString())
-                            .setContentText(message)
-                            .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                            .setTicker("Notification!")
-//                            .setWhen(System.currentTimeMillis())
-//                            .setDefaults(Notification.DEFAULT_SOUND)
-//                            .setAutoCancel(true)
-                            .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
-                            .build();
-
-                    notificationManager =
-                            (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-                    notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-//                    notify();
-
-
-
->>>>>>> 2320c66bfddeccf2f97d4c62dee999931476579c
                 }
 
                 else if (notificationPos == 1){
@@ -213,16 +179,34 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
             private void notifyMatch(Context context, Match[] matches, int position) {
 
-                int sec = getInterval(matches[position].getBegin_at().toString());
+//                String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
+//
+//                String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
+//                        + timeOfEvent);
+//
+//                myNotification = new NotificationCompat.Builder(context)
+//                        .setContentTitle(matches[position].getLeague().getName().toString())
+//                        .setContentText(message)
+//                        .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+//                        .setTicker("Notification!")
+////                            .setWhen(System.currentTimeMillis())
+////                            .setDefaults(Notification.DEFAULT_SOUND)
+////                            .setAutoCancel(true)
+//                        .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+//                        .build();
+//
+//                notificationManager =
+//                        (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+//                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
 
-                Calendar cal = Calendar.getInstance();
-                cal.add(sec, 0);
-
+                long sec = getInterval( matches[position].getBegin_at().toString());
+                long now = System.currentTimeMillis();
+                if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis() - 18360, pendingIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, sec, pendingIntent);
             }
 
-            private int getInterval(String milis) {
+            private long getInterval(String milis) {
 
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
                 Date date = null;
@@ -230,10 +214,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     date = sdf.parse(milis);
                     Long timeInMilliseconds = date.getTime();
                     Log.d("getMilis", "getMilis: " + timeInMilliseconds);
-                    return timeInMilliseconds.intValue() / 60000;
-
-//                    return timeInMilliseconds;
-                } catch (ParseException e) {
+                    return timeInMilliseconds;
+                }
+                catch (ParseException e) {
                     e.printStackTrace();
                 }
                 return 0;
@@ -246,7 +229,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         if(opponents.length > 0){
 
             Team team1  = opponents[0].getOpponent();
-//            holder.matchTeam1.setText(team1.getName());
 
             if (team1.getName() != null) {
                 holder.matchTeam1.setText(team1.getName());
@@ -327,3 +309,5 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         }
     }
 }
+
+
