@@ -122,10 +122,12 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                             .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
                             .build();
 
-                    notificationManager =
-                            (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
                     notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-//                    notify();
+
+//
+//                  notify();
+//
 
 
 

@@ -109,7 +109,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:alpha="0.8"
-                        android:text="League of Legend"
+                        android:text="League of Legends"
                         android:textColor="#FAFAFA"
                         android:textSize="25sp"
                         android:textStyle="bold" />

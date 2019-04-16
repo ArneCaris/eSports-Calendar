@@ -40,7 +40,7 @@ public class MatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match);
 
-        String game = getIntent().getStringExtra("game").toString();
+        String game = getIntent().getStringExtra("game");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -70,7 +70,7 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     private void fetchJSON(){
-        String game = getIntent().getStringExtra("game").toString();
+        String game = getIntent().getStringExtra("game");
         String url  = "https://api.pandascore.co/" + game + "/matches/upcoming?token=9BPCErZhuBjMWp1vTRopSF3XIbkoHVjJv9Ry1fAwf6mtyVU6564";
         Request request = new Request.Builder().url(url).build();
         OkHttpClient client = new OkHttpClient();

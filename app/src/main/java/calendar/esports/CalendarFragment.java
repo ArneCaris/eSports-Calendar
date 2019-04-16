@@ -95,7 +95,11 @@ public class CalendarFragment extends Fragment {
             }
         }
 
+        headerTxt.setOnClickListener((View) -> {
+            compactCalendar.removeAllEvents();
+            //pref.edit().remove().apply();
 
+        });
 
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
