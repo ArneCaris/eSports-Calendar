@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
+    android:freezesText="true"
     android:layout_height="match_parent"
     tools:context=".CalendarFragment">
 
@@ -11,6 +12,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:freezesText="true"
         android:background="@color/colorBlack">
 
         <TextView
@@ -18,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:gravity="center"
-            android:text="@string/header_text"
             android:textColor="#FFF"
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -34,6 +35,7 @@
             app:compactCalendarMultiEventIndicatorColor="#fff"
             app:compactCalendarTextColor="#fff"
             app:compactCalendarTextSize="15sp"
+            android:freezesText="true"
             app:layout_constraintTop_toBottomOf="@+id/header_text"
             app:layout_constraintBottom_toTopOf="@+id/events_view"/>
 
@@ -42,7 +44,7 @@
             android:id="@+id/events_view"
             android:layout_width="match_parent"
             android:layout_height="255dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendar_view" />

@@ -24,12 +24,14 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -95,16 +97,53 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
 
             private int notificationPos = 0;
+<<<<<<< HEAD
             Intent intent = new Intent(context, MyBroadcastReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
                     234324243, intent, 0);
+=======
+            private static final int MY_NOTIFICATION_ID=1;
+            NotificationManager notificationManager;
+            Notification myNotification;
+>>>>>>> 2320c66bfddeccf2f97d4c62dee999931476579c
 
             public void onClick(View view) {
 
                 if(notificationPos == 0){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
                     notificationPos = 1;
+<<<<<<< HEAD
                     notifyMatch(context, matches, position);
+=======
+
+
+                    Toast.makeText(context, (CharSequence) matches[position].getBegin_at()
+                            .toString(), Toast.LENGTH_SHORT).show();
+
+                    String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
+
+                    String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
+                                        + timeOfEvent);
+
+                    myNotification = new NotificationCompat.Builder(context)
+                            .setContentTitle(matches[position].getLeague().getName().toString())
+                            .setContentText(message)
+                            .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                            .setTicker("Notification!")
+//                            .setWhen(System.currentTimeMillis())
+//                            .setDefaults(Notification.DEFAULT_SOUND)
+//                            .setAutoCancel(true)
+                            .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                            .build();
+
+                    notificationManager =
+                            (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+//                    notify();
+
+
+
+>>>>>>> 2320c66bfddeccf2f97d4c62dee999931476579c
                 }
 
                 else if (notificationPos == 1){
@@ -114,8 +153,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 }
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
+
                 String time = matches[position].getBegin_at().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
                 ArrayList<String> times = new ArrayList<>();
                 try {
                     Date date = sdf.parse(time);
@@ -129,15 +169,18 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                         Team team1 = opponents[0].getOpponent();
                         if (opponents.length == 2) {
                             Team team2 = opponents[1].getOpponent();
-
                             String info = team1.getName() + " VS " + team2.getName() + " - " + matchHour;
-
                             setInfo.add(info);
                         } else {
-                            String info = team1.getName() + " VS TBA" + " - " + matchHour;
-                            setInfo.add(info);
+                            if (team1.getName() != null) {
+                                String info = team1.getName() + " VS TBA" + " - " + matchHour;
+                                setInfo.add(info);
+                            } else {
+                                Team team2 = opponents[1].getOpponent();
+                                String info = "TBA VS " + team2.getName() + " - " + matchHour;
+                                setInfo.add(info);
+                            }
                         }
-
                     } else {
                         String info = "TBA VS TBA - " + matchHour;
                         setInfo.add(info);

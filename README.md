@@ -3,5 +3,5 @@
 ### Technologies Used
 
 
-* <a href="">Android Studio</a>
-* <a href="">Java</a>
+* <a href="https://developer.android.com/studio">Android Studio</a>
+* <a href="https://www.java.com/en/">Java</a>
