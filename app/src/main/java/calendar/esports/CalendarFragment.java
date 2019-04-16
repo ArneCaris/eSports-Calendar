@@ -5,17 +5,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Calendar;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -39,6 +45,9 @@ public class CalendarFragment extends Fragment {
 
     ArrayList<String> listTime = new ArrayList<>();
     ArrayList<String> listInfo = new ArrayList<>();
+    ArrayList<String> listTimeSP = new ArrayList<>();
+    ArrayList<String> listInfoSP = new ArrayList<>();
+
 
     CompactCalendarView compactCalendar;
     TextView headerTxt;
@@ -47,6 +56,15 @@ public class CalendarFragment extends Fragment {
     Event eventsViewText = null;
     Context context;
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            listTime = savedInstanceState.getStringArrayList("time");
+            listInfo = savedInstanceState.getStringArrayList("info");
+        }
+    }
+
     public CalendarFragment() {
         // Required empty public constructor
     }
@@ -54,6 +72,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
 
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         context = container.getContext();
@@ -64,35 +83,63 @@ public class CalendarFragment extends Fragment {
         headerTxt.setText(dateFormatMonth.format(compactCalendar.getFirstDayOfCurrentMonth()));
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-
+        SharedPreferences.Editor editor = pref.edit();
 
         Set<String> setTime = pref.getStringSet("key", null);
         Set<String> setInfo = pref.getStringSet("key2", null);
+        Set<String> setTimeAfter = pref.getStringSet("timeAfter", null);
+        Set<String> setInfoAfter = pref.getStringSet("infoAfter", null);
 
-        if (setTime != null && setInfo != null) {
-            Log.d("SETTwow", "timeSet: " + PreferenceManager.getDefaultSharedPreferences(context));
-            Log.d("SETTwow", "infoSet: " + setInfo);
+        if (setTime != null && setInfo != null && setTimeAfter != null && setInfoAfter != null) {
+            Log.d("SETTwow", "timeSet: " + pref.getStringSet("timeAfter", null));
+            Log.d("SETTwow", "infoSet: " + pref.getStringSet("infoAfter", null));
 
-            List<String> listTimeDummy = new ArrayList<>(setTime);
-            List<String> listInfoDummy = new ArrayList<>(setInfo);
+            ArrayList<String> listTimeDummy = new ArrayList<>(setTime);
+            ArrayList<String> listInfoDummy = new ArrayList<>(setInfo);
+            ArrayList<String> listTimeSPDummy = new ArrayList<>(setTimeAfter);
+            ArrayList<String> listInfoSPDummy = new ArrayList<>(setInfoAfter);
+
 
             Log.d("SETTwow", "timeDummy: " + listTimeDummy);
             Log.d("SETTwow", "infoDummy: " + listInfoDummy);
 
-            for (int y = 1; y <= listTimeDummy.size(); y++) {
+            for (int y = 0; y < setTime.size(); y++) {
+                if (!listTime.contains(listTimeDummy.get(y))) {
+                    listTime.add(listTimeDummy.get(y));
+                    listInfo.add(listInfoDummy.get(y));
+                }
+            }
 
-                listTime.add(listTimeDummy.get(y-1));
-                listInfo.add(listInfoDummy.get(y-1));
+            for (int z = 0; z < setTimeAfter.size(); z++) {
+                if (!listTimeSP.contains(listTimeSPDummy.get(z)) && !listTimeSP.contains(listTimeDummy.get(z))) {
+                    listTimeSP.add(listTimeSPDummy.get(z));
+                    listInfoSP.add(listInfoSPDummy.get(z));
+                }
+            }
 
-                Log.d("LOOPCHECK", "onCreateView: " + listInfo.get(y-1));
+            for (int x = 0; x < listTimeSP.size(); x++) {
 
-                Long date = Long.valueOf(listTime.get(y-1));
-                String info = listInfo.get(y-1);
+                Long dateSP = Long.valueOf(listTimeSP.get(x));
+                String infoSP = listInfoSP.get(x);
+
+                Event event2 = new Event(Color.BLUE, dateSP, infoSP);
+                compactCalendar.addEvent(event2);
+            }
+
+            for (int i = 0; i < listTime.size(); i++) {
+
+                Long date = Long.valueOf(listTime.get(i));
+                String info = listInfo.get(i);
 
                 Event event1 = new Event(Color.RED, date, info);
                 compactCalendar.addEvent(event1);
-
             }
+            
+            Set<String> setTimeSP = new HashSet<>(listTime);
+            Set<String> setInfoSP = new HashSet<>(listInfo);
+            editor.putStringSet("timeAfter", setTimeSP);
+            editor.putStringSet("infoAfter", setInfoSP);
+            editor.commit();
         }
 
         headerTxt.setOnClickListener((View) -> {
@@ -100,7 +147,6 @@ public class CalendarFragment extends Fragment {
             //pref.edit().remove().apply();
 
         });
-
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
@@ -130,6 +176,14 @@ public class CalendarFragment extends Fragment {
         });
         return view;
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList("time", listTime );
+        outState.putStringArrayList("info", listInfo);
+    }
+
 
 
 }
