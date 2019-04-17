@@ -198,8 +198,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 //                notificationManager =
 //                        (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 //                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-
-                long sec = getInterval( matches[position].getBegin_at().toString());
+//                matches[position].getBegin_at().toString()
+                long sec = getInterval("Wed Apr 17 12:43:00 GMT+03:00 2019");
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);

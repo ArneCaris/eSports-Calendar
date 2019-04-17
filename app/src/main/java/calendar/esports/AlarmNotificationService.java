@@ -8,8 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import java.util.Random;
+
 public class AlarmNotificationService extends IntentService {
-    public static final int MY_NOTIFICATION_ID=1;
+    public static int MY_NOTIFICATION_ID = 1;
+    Random random = new Random();
+    int m = random.nextInt(9999 - 1000) + 1000;
+
     private NotificationManager notificationManager;
 
     private String title;
