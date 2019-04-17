@@ -177,9 +177,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);
 
+
                 NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.cancel(AlarmNotificationService.MY_NOTIFICATION_ID);
-
             }
 
 //             private void notifier(){
@@ -225,7 +225,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, sec, pendingIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, now, pendingIntent);
             }
 
             private long getInterval(String milis) {

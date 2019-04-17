@@ -8,12 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import java.util.Date;
 import java.util.Random;
 
 public class AlarmNotificationService extends IntentService {
-    public static int MY_NOTIFICATION_ID = 1;
-    Random random = new Random();
-    int m = random.nextInt(9999 - 1000) + 1000;
+    //    public static int MY_NOTIFICATION_ID = 1;
+    static Random random = new Random();
+    public static int MY_NOTIFICATION_ID = random.nextInt(9999 - 1000) + 1000;
+
 
     private NotificationManager notificationManager;
 
@@ -42,7 +44,6 @@ public class AlarmNotificationService extends IntentService {
 //                        .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.drawable.lol)
                         .build();
-
-        notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+        notificationManager.notify((int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE), myNotification);
     }
 }
