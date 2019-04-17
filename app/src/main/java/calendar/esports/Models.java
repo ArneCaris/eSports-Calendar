@@ -1,6 +1,7 @@
 package calendar.esports;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Match implements Serializable, Comparable<Match>{
     private Integer id;
@@ -261,5 +262,13 @@ class Player implements Serializable{
 
     public void setRole(String role) {
         this.role = role;
+    }
+}
+
+
+class NotificationID {
+    private final static AtomicInteger c = new AtomicInteger(0);
+    public static int getID() {
+        return c.incrementAndGet();
     }
 }

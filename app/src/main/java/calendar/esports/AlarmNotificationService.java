@@ -7,20 +7,17 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Random;
 
 public class AlarmNotificationService extends IntentService {
-    //    public static int MY_NOTIFICATION_ID = 1;
-    static Random random = new Random();
-    public static int MY_NOTIFICATION_ID = random.nextInt(9999 - 1000) + 1000;
 
-
+    public int MY_NOTIFICATION_ID = NotificationID.getID();
     private NotificationManager notificationManager;
-
-    private String title;
-    private String content;
 
     public AlarmNotificationService() {
         super("AlarmNotificationService");
@@ -28,22 +25,52 @@ public class AlarmNotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        sendNotification("Match Start");
+        String gameIcon = intent.getStringExtra("gameIcon");
+        Serializable serializable = intent.getSerializableExtra("match");
+        if(serializable instanceof Match) {
+            Match match = (Match) serializable;
+            Log.d("matchName", "onReceive Match: " + match.getName());
+            Log.d("gameIcon", "onReceive: " + gameIcon);
+            sendNotification("Match Start", gameIcon, match);
+        }
     }
 
-    private void sendNotification(String msg) {
+
+    private void sendNotification(String msg, String gameIcon, Match match) {
         notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.ENGLISH).format(match.getBegin_at());
+        String defLogo = "game_logo1" ;
+
+        if (gameIcon.equals("csgo")) {
+            defLogo = defLogo.replace("1", "2");
+        } else if (gameIcon.equals("lol")) {
+            defLogo = defLogo.replace("1", "5");
+        } else if (gameIcon.equals("ow")) {
+            defLogo = defLogo.replace("1", "4");
+        } else if (gameIcon.equals("dota2")) {
+            defLogo = defLogo.replace("1", "3");
+        }
+
+        int gameIdentifier = this.getResources().getIdentifier(defLogo, "drawable",
+                         this.getPackageName());
+
+        String message = ("You've set a notification for " + match.getName() + "\n" + "Match starts at: "
+                         + timeOfEvent);
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification myNotification = new NotificationCompat.Builder(this)
-                        .setContentTitle(msg)
-                        .setContentText("Match starts")
-                        .setTicker("Notification!")
-//                        .setWhen(System.currentTimeMillis())
-                        .setSmallIcon(R.drawable.lol)
-                        .build();
-        notificationManager.notify((int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE), myNotification);
+                .setContentTitle(match.getLeague().getName().toString())
+                         .setContentText(message)
+                         .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                         .setTicker("Notification!")
+                             .setWhen(System.currentTimeMillis())
+ //                            .setDefaults(Notification.DEFAULT_SOUND)
+ //                            .setAutoCancel(true)
+                         .setSmallIcon(gameIdentifier)
+                         .build();
+
+        notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
     }
 }
