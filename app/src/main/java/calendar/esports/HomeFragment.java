@@ -7,11 +7,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import calendar.esports.MainActivity;
 import calendar.esports.Model.Points;
@@ -36,7 +38,7 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        TextView kek = (TextView) v.findViewById(R.id.newsBtn);
+        CardView kek = (CardView) v.findViewById(R.id.news_card1);
         kek.setOnClickListener((View) ->{
             Intent i = new Intent(getActivity(), NewsActivity.class);
             startActivity(i);
@@ -45,13 +47,9 @@ public class HomeFragment extends Fragment {
         Points pp = new Points();
 
         //asd = String.valueOf(Integer.parseInt(asd)) ;
-        Button tb = (Button) v.findViewById(R.id.testBtn);
-        tb.setOnClickListener((View) -> {
-            Intent i = new Intent(getActivity(), CreditsActivity.class);
-            startActivity(i);
-        });
 
-        TextView tv = (TextView) v.findViewById(R.id.achiText);
+
+        TextView tv = (TextView) v.findViewById(R.id.achi_text);
         tv.setText(pp.getAchievementValue());
         return v;
     }

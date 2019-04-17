@@ -17,7 +17,6 @@
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreditsActivity"></activity>
         <activity android:name=".Instructions.SlideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +26,7 @@
         </activity>
         <activity
             android:name=".NewsActivity"
+            android:parentActivityName=".MainActivity"
             android:label="News">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

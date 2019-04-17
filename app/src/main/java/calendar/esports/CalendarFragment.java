@@ -143,6 +143,11 @@ public class CalendarFragment extends Fragment {
         }
 
 
+//        headerTxt.setOnClickListener((View) -> {
+//            editor.clear();
+//        });
+
+
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {

@@ -26,7 +26,7 @@ public class NewsActivity extends AppCompatActivity {
     RSSObject rssObject;
 
     //RSS link
-    private String RSS_link ="https://esportsobserver.com/feed/";
+    private String RSS_link = "https://esportsobserver.com/feed/";
     private String RSS_to_Json_API = "https://api.rss2json.com/v1/api.json?rss_url=";
 
     @Override

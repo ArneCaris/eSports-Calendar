@@ -6,9 +6,8 @@
     <string name="app_dir">Directory</string>
     <string name="app_welcome">Welcome to your Hub</string>
     <string name="app_recommend">Recommended for You</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="header_text">Calendar</string>
     <string name="skip_text">Skip</string>
+    <string name="student_credits">This project was developed by students of OAMK</string>
 </resources>

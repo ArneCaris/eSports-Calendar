@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,10 +43,14 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     Set<String> setInfo = new HashSet<>();
     private Match[] matches;
     private Context context;
+    private String games;
 
-    public MatchAdapter(Context context, Match[] matches) {
+
+
+    public MatchAdapter(Context context, Match[] matches, String games) {
         this.matches = matches;
         this.context = context;
+        this.games = games;
     }
 
     @Override
@@ -61,6 +64,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         String matchInfo = matches[position].getName() + ": " + matches[position].getId().toString();
+
+        String gameIcon = games ;
 
         String matchHour = new SimpleDateFormat("h:mm a").format(matches[position].getBegin_at());
         holder.matchHour.setText(matchHour);
@@ -95,6 +100,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 context.startActivity(intent);
         });
 
+
+
         holder.notificationIcon.setOnClickListener(new View.OnClickListener() {
 
             private int           notificationPos = 0;
@@ -106,10 +113,15 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(),
                         234324243, intent, 0);
 
+            
                 if(notificationPos == 0){
-                    holder.notificationIcon.setImageResource(R.drawable.ic_notifications_active_black_24dp);
+                    holder.notificationIcon.setImageResource(R.drawable.game_logo1);
                     notificationPos = 1;
-                    notifyMatch(context, matches, position);
+
+
+                    notifyMatch(context, matches);
+
+                    // notifier();
                 }
 
                 else if (notificationPos == 1){
@@ -119,7 +131,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 }
 
                 //Function to add event to the calendar (with bundle? or args? or import calendar?)
-
                 String time = matches[position].getBegin_at().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
                 ArrayList<String> times = new ArrayList<>();
@@ -157,12 +168,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     editor.putStringSet("key", set);
                     editor.commit();
 
-//                    FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.add(R.id.calendar_layout, fragobj);
-//                    fragmentTransaction.replace(R.id.calendar_view, fragobj);
-//                    fragmentTransaction.commit();
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -177,29 +182,46 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
             }
 
-            private void notifyMatch(Context context, Match[] matches, int position) {
+//             private void notifier(){
+//                 NotificationManager notificationManager;
+//                 Notification myNotification;
+//                 String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.ENGLISH).format(matches[position].getBegin_at());
+//                 String defLogo = "game_logo1" ;
 
-//                String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
-//
-//                String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
-//                        + timeOfEvent);
-//
-//                myNotification = new NotificationCompat.Builder(context)
-//                        .setContentTitle(matches[position].getLeague().getName().toString())
-//                        .setContentText(message)
-//                        .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-//                        .setTicker("Notification!")
-////                            .setWhen(System.currentTimeMillis())
-////                            .setDefaults(Notification.DEFAULT_SOUND)
-////                            .setAutoCancel(true)
-//                        .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
-//                        .build();
-//
-//                notificationManager =
-//                        (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-//                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
-//                matches[position].getBegin_at().toString()
-                long sec = getInterval("Wed Apr 17 12:43:00 GMT+03:00 2019");
+//                 if (gameIcon.equals("csgo")) {
+//                     defLogo = defLogo.replace("1", "2");
+//                 } else if (gameIcon.equals("lol")) {
+//                     defLogo = defLogo.replace("1", "5");
+//                 } else if (gameIcon.equals("ow")) {
+//                     defLogo = defLogo.replace("1", "4");
+//                 } else if (gameIcon.equals("dota2")) {
+//                     defLogo = defLogo.replace("1", "3");
+//                 }
+
+
+//                 int gameIdentifier = context.getResources().getIdentifier(defLogo, "drawable",
+//                         context.getPackageName());
+
+//                 String message = ("You've set a notification for " + matches[position].getName() + "\n" + "Match starts at: "
+//                         + timeOfEvent);
+
+//                 myNotification = new NotificationCompat.Builder(context)
+//                         .setContentTitle(matches[position].getLeague().getName().toString())
+//                         .setContentText(message)
+//                         .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+//                         .setTicker("Notification!")
+// //                            .setWhen(System.currentTimeMillis())
+// //                            .setDefaults(Notification.DEFAULT_SOUND)
+// //                            .setAutoCancel(true)
+//                         .setSmallIcon(gameIdentifier)
+//                         .build();
+
+//                 notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+//                 notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+//             }
+
+            private void notifyMatch(Context context, Match[] matches) {
+                long sec = getInterval( matches[position].getBegin_at().toString());
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
