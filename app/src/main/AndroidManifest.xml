@@ -4,19 +4,33 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/estream"
         android:label="eSports Calendar"
+        android:largeHeap="true"
         android:roundIcon="@drawable/estream"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".NotificationServiceStarterReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+        <receiver
+            android:name=".NotificationEventReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".MatchNotificationService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".Instructions.SlideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +40,8 @@
         </activity>
         <activity
             android:name=".NewsActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="News">
+            android:label="News"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -43,7 +57,8 @@
             android:name=".MatchActivity"
             android:label=""
             android:launchMode="singleTop">
-            <!--<icon android:src="@drawable/ic_launcher"></icon>-->
+
+            <!-- <icon android:src="@drawable/ic_launcher"></icon> -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -51,9 +66,10 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <receiver android:name="MyBroadcastReceiver" />
-        <service android:name=".AlarmNotificationService" />
 
+        <service
+            android:name=".AlarmNotificationService"
+            android:exported="false" />
     </application>
 
 </manifest>
