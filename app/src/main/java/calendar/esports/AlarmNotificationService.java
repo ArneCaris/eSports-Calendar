@@ -16,7 +16,8 @@ import java.util.Random;
 
 public class AlarmNotificationService extends IntentService {
 
-    public int MY_NOTIFICATION_ID = NotificationID.getID();
+    public static int MY_NOTIFICATION_ID;
+    //    public static int MY_NOTIFICATION_ID;// = NotificationID.getID();
     private NotificationManager notificationManager;
 
     public AlarmNotificationService() {
@@ -25,10 +26,12 @@ public class AlarmNotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        String gameIcon = intent.getStringExtra("gameIcon");
+        String gameIcon           = intent.getStringExtra("gameIcon");
         Serializable serializable = intent.getSerializableExtra("match");
         if(serializable instanceof Match) {
-            Match match = (Match) serializable;
+            Match match           = (Match) serializable;
+            MY_NOTIFICATION_ID    = match.getId();
+
             Log.d("matchName", "onReceive Match: " + match.getName());
             Log.d("gameIcon", "onReceive: " + gameIcon);
             sendNotification("Match Start", gameIcon, match);
@@ -52,24 +55,24 @@ public class AlarmNotificationService extends IntentService {
         }
 
         int gameIdentifier = this.getResources().getIdentifier(defLogo, "drawable",
-                         this.getPackageName());
+                this.getPackageName());
 
         String message = ("You've set a notification for " + match.getName() + "\n" + "Match starts at: "
-                         + timeOfEvent);
+                + timeOfEvent);
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification myNotification = new NotificationCompat.Builder(this)
                 .setContentTitle(match.getLeague().getName().toString())
-                         .setContentText(message)
-                         .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                         .setTicker("Notification!")
-                             .setWhen(System.currentTimeMillis())
- //                            .setDefaults(Notification.DEFAULT_SOUND)
- //                            .setAutoCancel(true)
-                         .setSmallIcon(gameIdentifier)
-                         .build();
+                .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .setTicker("Notification!")
+                .setWhen(System.currentTimeMillis())
+                //                            .setDefaults(Notification.DEFAULT_SOUND)
+                //                            .setAutoCancel(true)
+                .setSmallIcon(gameIdentifier)
+                .build();
 
         notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
     }
