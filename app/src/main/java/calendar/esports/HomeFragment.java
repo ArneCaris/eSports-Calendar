@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,13 +45,16 @@ public class HomeFragment extends Fragment {
             startActivity(i);
         });
 
-        Points pp = new Points();
 
-        //asd = String.valueOf(Integer.parseInt(asd)) ;
+        Button btn = (Button) v.findViewById(R.id.testbtn);
+
+        btn.setOnClickListener((View) -> {
+            Intent i = new Intent(getActivity(), StreamActivity.class);
+            startActivity(i);
+        });
 
 
-        TextView tv = (TextView) v.findViewById(R.id.achi_text);
-        tv.setText(pp.getAchievementValue());
+
         return v;
     }
 }

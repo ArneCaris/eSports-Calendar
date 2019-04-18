@@ -104,12 +104,12 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             private PendingIntent pendingIntent;
 
             public void onClick(View view) {
-                intent = new Intent(context, MyBroadcastReceiver.class);
+                intent = new Intent(context, AlarmNotificationService.class);
                 intent.putExtra("gameIcon", games);
                 intent.putExtra("match", matches[position]);
                 int ticks  = (int) System.currentTimeMillis();
                 int ticks2 = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-                pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), ticks, intent, ticks2);
+                pendingIntent = PendingIntent.getService(context.getApplicationContext(), ticks, intent, ticks2);
 
             
                 if(notificationPos == 0){
