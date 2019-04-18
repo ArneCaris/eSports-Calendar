@@ -115,11 +115,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 if(notificationPos == 0){
                     holder.notificationIcon.setImageResource(R.drawable.game_logo1);
                     notificationPos = 1;
-
-
                     notifyMatch(context, matches);
-
-                    // notifier();
                 }
 
                 else if (notificationPos == 1){
