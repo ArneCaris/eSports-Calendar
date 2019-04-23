@@ -17,6 +17,22 @@
         android:roundIcon="@drawable/estream"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <receiver
+            android:name=".NotificationServiceStarterReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+        <receiver
+            android:name=".NotificationEventReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".MatchNotificationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Instructions.SlideActivity"/>
         <activity
             android:name=".Instructions.SplashScreenActivity"
             android:theme="@style/SplashTheme">
@@ -26,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Instructions.SlideActivity" />
         <activity
             android:name=".NewsActivity"
             android:label="News"
@@ -55,8 +70,6 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-
-        <receiver android:name=".MyBroadcastReceiver" />
 
         <service android:name=".AlarmNotificationService" />
     </application>
