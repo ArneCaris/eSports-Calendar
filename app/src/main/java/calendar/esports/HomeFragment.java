@@ -45,16 +45,6 @@ public class HomeFragment extends Fragment {
             startActivity(i);
         });
 
-
-        Button btn = (Button) v.findViewById(R.id.testbtn);
-
-        btn.setOnClickListener((View) -> {
-            Intent i = new Intent(getActivity(), StreamActivity.class);
-            startActivity(i);
-        });
-
-
-
         return v;
     }
 }

@@ -9,11 +9,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Random;
@@ -21,6 +23,7 @@ import java.util.Random;
 public class AlarmNotificationService extends IntentService {
     private final String CHANNEL_ID = "estream_notifications";
     public static int MY_NOTIFICATION_ID;
+    public String channelName;
     //    public static int MY_NOTIFICATION_ID;// = NotificationID.getID();
     private NotificationManager notificationManager;
 
@@ -63,19 +66,30 @@ public class AlarmNotificationService extends IntentService {
         String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(match.getBegin_at());
         String defLogo = "game_logo1" ;
 
+        String urlCsgo = "https://www.twitch.tv/directory/game/Counter-Strike%3A%20Global%20Offensive";
+        String urlLol = "https://www.twitch.tv/directory/game/League%20of%20Legends";
+        String urlOw = "https://www.twitch.tv/directory/game/Overwatch";
+        String urlDota2 = "https://www.twitch.tv/directory/game/Dota%202";
 
+        Intent streamIntent = new Intent(Intent.ACTION_VIEW);
 
         switch (gameIcon) {
             case "csgo":
                 defLogo = defLogo.replace("1", "2");
-                break;            case "lol":
+                streamIntent.setData(Uri.parse(urlCsgo));
+                //uri.parse("https://twitch.tv/ + channelName")
+                break;
+            case "lol":
                 defLogo = defLogo.replace("1", "5");
+                streamIntent.setData(Uri.parse(urlLol));
                 break;
             case "ow":
                 defLogo = defLogo.replace("1", "4");
+                streamIntent.setData(Uri.parse(urlOw));
                 break;
             case "dota2":
                 defLogo = defLogo.replace("1", "3");
+                streamIntent.setData(Uri.parse(urlDota2));
                 break;
         }
 
@@ -85,8 +99,9 @@ public class AlarmNotificationService extends IntentService {
         String message = ("You've set a notification for " + match.getName() + "\n" + "Match starts at: "
                 + timeOfEvent);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingStreamIntent = PendingIntent.getActivity(this, 1, streamIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
         Notification myNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle(match.getLeague().getName().toString())
@@ -97,7 +112,12 @@ public class AlarmNotificationService extends IntentService {
                 //.setDefaults(Notification.DEFAULT_SOUND)
                 //.setAutoCancel(true)
                 .setSmallIcon(gameIdentifier)
+                .setOngoing(true)
+                .setContentIntent(pendingStreamIntent)
                 .build();
+
+
+
 
         notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
     }

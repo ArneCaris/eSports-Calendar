@@ -17,7 +17,6 @@
         android:roundIcon="@drawable/estream"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StreamActivity"></activity>
         <activity
             android:name=".Instructions.SplashScreenActivity"
             android:theme="@style/SplashTheme">
