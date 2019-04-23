@@ -32,12 +32,17 @@
             android:exported="true" />
 
         <activity android:name=".Instructions.SlideActivity">
+        <activity android:name=".StreamActivity"></activity>
+        <activity
+            android:name=".Instructions.SplashScreenActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Instructions.SlideActivity" />
         <activity
             android:name=".NewsActivity"
             android:label="News"
@@ -67,9 +72,9 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
 
-        <service
-            android:name=".AlarmNotificationService"
-            android:exported="false" />
+        <receiver android:name=".MyBroadcastReceiver" />
+
+        <service android:name=".AlarmNotificationService" />
     </application>
 
 </manifest>

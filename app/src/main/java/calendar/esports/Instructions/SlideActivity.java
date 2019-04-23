@@ -94,4 +94,5 @@ public class SlideActivity extends FragmentActivity {
         }
 
     }
+
 }

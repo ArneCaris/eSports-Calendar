@@ -8,8 +8,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "calendar.esports"
+
         minSdkVersion 23
-        targetSdkVersion 24
+        targetSdkVersion 26
+
 
         versionCode 1
         versionName "1.0"

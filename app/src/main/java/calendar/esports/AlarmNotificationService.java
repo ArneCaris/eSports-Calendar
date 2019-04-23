@@ -34,7 +34,7 @@ public class AlarmNotificationService extends IntentService {
 
             Log.d("matchName", "onReceive Match: " + match.getName());
             Log.d("gameIcon", "onReceive: " + gameIcon);
-            sendNotification("Match Start", gameIcon, match);
+            sendNotification("Match is Starting", gameIcon, match);
         }
     }
 
@@ -44,14 +44,19 @@ public class AlarmNotificationService extends IntentService {
         String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.ENGLISH).format(match.getBegin_at());
         String defLogo = "game_logo1" ;
 
-        if (gameIcon.equals("csgo")) {
-            defLogo = defLogo.replace("1", "2");
-        } else if (gameIcon.equals("lol")) {
-            defLogo = defLogo.replace("1", "5");
-        } else if (gameIcon.equals("ow")) {
-            defLogo = defLogo.replace("1", "4");
-        } else if (gameIcon.equals("dota2")) {
-            defLogo = defLogo.replace("1", "3");
+        switch (gameIcon) {
+            case "csgo":
+                defLogo = defLogo.replace("1", "2");
+                break;
+            case "lol":
+                defLogo = defLogo.replace("1", "5");
+                break;
+            case "ow":
+                defLogo = defLogo.replace("1", "4");
+                break;
+            case "dota2":
+                defLogo = defLogo.replace("1", "3");
+                break;
         }
 
         int gameIdentifier = this.getResources().getIdentifier(defLogo, "drawable",

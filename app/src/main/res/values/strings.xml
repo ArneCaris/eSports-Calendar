@@ -9,5 +9,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="header_text">Calendar</string>
     <string name="skip_text">Skip</string>
-    <string name="student_credits">This project was developed by students of OAMK</string>
+    <string name="student_credits">A project developed by students of OAMK</string>
+    <string name="estream">EStream</string>
+    <string name="tap_here_to_begin">tap here to begin</string>
 </resources>
