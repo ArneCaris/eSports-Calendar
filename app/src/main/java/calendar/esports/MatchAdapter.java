@@ -62,16 +62,16 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         String gameIcon = games;
 
-        String matchHour = new SimpleDateFormat("h:mm a").format(matches[position].getBegin_at());
+        String matchHour = new SimpleDateFormat("h:mm a", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchHour.setText(matchHour);
 
-        String matchMonth = new SimpleDateFormat("MMM").format(matches[position].getBegin_at());
+        String matchMonth = new SimpleDateFormat("MMM", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchMonth.setText(matchMonth);
 
-        String matchDate = new SimpleDateFormat("d").format(matches[position].getBegin_at());
+        String matchDate = new SimpleDateFormat("d", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchDate.setText(matchDate);
 
-        String matchWeekDay = new SimpleDateFormat("E").format(matches[position].getBegin_at());
+        String matchWeekDay = new SimpleDateFormat("E", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchWeekDay.setText(matchWeekDay);
 
         String matchLeague = matches[position].getLeague().getName().toString();
@@ -181,12 +181,12 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, sec, pendingIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, now + 5000, pendingIntent);
             }
 
             private long getInterval(String milis) {
 
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
                 Date date = null;
                 try {
                     date = sdf.parse(milis);

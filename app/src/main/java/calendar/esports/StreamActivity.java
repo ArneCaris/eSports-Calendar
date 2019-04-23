@@ -18,7 +18,7 @@ public class StreamActivity extends AppCompatActivity {
             public void run() {
                 //int width = webView.getWidth();
                 //int height = webView.getHeight();
-                webView.loadUrl("https://www.twitch.tv");
+                webView.loadUrl("https://twitch.tv/directory/game/Just%20Chatting/");
             }
         });
     }
