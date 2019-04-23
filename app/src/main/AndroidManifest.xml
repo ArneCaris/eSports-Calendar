@@ -31,7 +31,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Instructions.SlideActivity">
+        <activity android:name=".Instructions.SlideActivity"/>
         <activity android:name=".StreamActivity"></activity>
         <activity
             android:name=".Instructions.SplashScreenActivity"
@@ -42,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Instructions.SlideActivity" />
         <activity
             android:name=".NewsActivity"
             android:label="News"
