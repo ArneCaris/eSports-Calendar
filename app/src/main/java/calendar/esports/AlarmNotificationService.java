@@ -15,6 +15,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
+import com.google.android.exoplayer2.C;
+
 import java.io.Serializable;
 import java.net.URL;
 import java.text.SimpleDateFormat;
