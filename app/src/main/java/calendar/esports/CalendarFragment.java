@@ -143,6 +143,9 @@ public class CalendarFragment extends Fragment {
 
 
        headerTxt.setOnClickListener((View) -> {
+           editor.clear();
+           editor.commit();
+           eventsView.setText("No events scheduled for this day!");
            compactCalendar.removeAllEvents();
        });
 

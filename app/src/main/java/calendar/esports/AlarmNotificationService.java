@@ -95,8 +95,7 @@ public class AlarmNotificationService extends IntentService {
         int gameIdentifier = this.getResources().getIdentifier(defLogo, "drawable",
                 this.getPackageName());
 
-        String message = ("You've set a notification for " + match.getName() + "\n" + "Match starts at: "
-                + timeOfEvent);
+        String message = ("Your match will start in 5 minutes! Click me to start watching!");
 
         PendingIntent pendingStreamIntent = PendingIntent.getActivity(this, 0, streamIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
