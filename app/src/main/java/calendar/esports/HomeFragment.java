@@ -4,6 +4,7 @@ package calendar.esports;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
@@ -17,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import calendar.esports.MainActivity;
 import calendar.esports.Model.Points;
 
@@ -40,10 +40,11 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         CardView kek = (CardView) v.findViewById(R.id.news_card1);
-        kek.setOnClickListener((View) ->{
+        CardView cardView = (CardView) v.findViewById(R.id.esport_news);
+        cardView.setOnClickListener((view -> {
             Intent i = new Intent(getActivity(), NewsActivity.class);
             startActivity(i);
-        });
+        }));
 
 
         return v;
