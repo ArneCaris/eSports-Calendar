@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import calendar.esports.MainActivity;
 import calendar.esports.Model.Points;
 
@@ -31,19 +33,18 @@ public class HomeFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-
         CardView kek = (CardView) v.findViewById(R.id.news_card1);
         kek.setOnClickListener((View) ->{
             Intent i = new Intent(getActivity(), NewsActivity.class);
             startActivity(i);
         });
+
 
         return v;
     }

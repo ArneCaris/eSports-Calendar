@@ -75,7 +75,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         String matchWeekDay = new SimpleDateFormat("E", Locale.getDefault()).format(matches[position].getBegin_at());
         holder.matchWeekDay.setText(matchWeekDay);
 
-        String matchLeague = matches[position].getLeague().getName().toString();
+        String matchLeague = matches[position].getLeague().getName();
         holder.matchLeague.setText(matchLeague);
 
         Opponents[] opponents = matches[position].getOpponents();
@@ -179,7 +179,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 long sec = getInterval( matches[position].getBegin_at().toString());
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
-                AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP,  sec, pendingIntent);
 
             }
@@ -215,7 +214,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             }
 
             if(team1.getImage_url() != null) {
-                Picasso.get().load(team1.getImage_url().toString()).into(holder.matchTeam1Img);
+                Picasso.get().load(team1.getImage_url()).into(holder.matchTeam1Img);
             } else {
                 holder.matchTeam1Img.setAlpha(0);
             }
@@ -230,7 +229,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 }
 
                 if(team2.getImage_url() != null) {
-                    Picasso.get().load(team2.getImage_url().toString()).into(holder.matchTeam2Img);
+                    Picasso.get().load(team2.getImage_url()).into(holder.matchTeam2Img);
                 } else {
                     holder.matchTeam2Img.setAlpha(0);
                 }

@@ -51,7 +51,7 @@ public class AlarmNotificationService extends IntentService {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "EStream Notifications";
             String description = "All EStream notifications";
-            int importance = notificationManager.IMPORTANCE_DEFAULT;
+            int importance = notificationManager.IMPORTANCE_LOW;
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, importance);
             notificationChannel.setDescription(description);
             notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

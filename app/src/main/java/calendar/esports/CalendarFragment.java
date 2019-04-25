@@ -90,14 +90,14 @@ public class CalendarFragment extends Fragment {
         Set<String> setTimeAfter = pref.getStringSet("timeAfter", null);
         Set<String> setInfoAfter = pref.getStringSet("infoAfter", null);
 
-        if (setTime != null && setInfo != null && setTimeAfter != null && setInfoAfter != null) {
+        if (setTime != null && setInfo != null ) {
             Log.d("SETTwow", "timeSet: " + pref.getStringSet("timeAfter", null));
             Log.d("SETTwow", "infoSet: " + pref.getStringSet("infoAfter", null));
 
             ArrayList<String> listTimeDummy = new ArrayList<>(setTime);
             ArrayList<String> listInfoDummy = new ArrayList<>(setInfo);
-            ArrayList<String> listTimeSPDummy = new ArrayList<>(setTimeAfter);
-            ArrayList<String> listInfoSPDummy = new ArrayList<>(setInfoAfter);
+            //ArrayList<String> listTimeSPDummy = new ArrayList<>(setTimeAfter);
+            //ArrayList<String> listInfoSPDummy = new ArrayList<>(setInfoAfter);
 
 
             Log.d("SETTwow", "timeDummy: " + listTimeDummy);
@@ -110,12 +110,12 @@ public class CalendarFragment extends Fragment {
                 }
             }
 
-            for (int z = 0; z < setTimeAfter.size(); z++) {
-                if (!listTimeSP.contains(listTimeSPDummy.get(z)) && !listTimeSP.contains(listTimeDummy.get(z))) {
+            /*for (int z = 0; z < setTimeAfter.size(); z++) {
+                if (!listTimeSP.contains(listTimeSPDummy.get(z))){
                     listTimeSP.add(listTimeSPDummy.get(z));
                     listInfoSP.add(listInfoSPDummy.get(z));
                 }
-            }
+            }*/
 
             for (int x = 0; x < listTimeSP.size(); x++) {
 
@@ -143,9 +143,9 @@ public class CalendarFragment extends Fragment {
         }
 
 
-//        headerTxt.setOnClickListener((View) -> {
-//            editor.clear();
-//        });
+       headerTxt.setOnClickListener((View) -> {
+           compactCalendar.removeAllEvents();
+       });
 
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
