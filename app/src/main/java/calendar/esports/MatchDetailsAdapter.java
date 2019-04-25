@@ -45,19 +45,19 @@ public class MatchDetailsAdapter extends RecyclerView.Adapter<MatchDetailsAdapte
         Player[] playersTeam1  = mteam1.getPlayers();
         Player[] playersTeam2  = mteam2.getPlayers();
         if(playersTeam1.length > 0){
-            holder.playerName1.setText(playersTeam1[i].getName().toString() );
+            holder.playerName1.setText(playersTeam1[i].getName());
             if(playersTeam1[i].getRole() != null)
-                holder.playerRole1.setText(playersTeam1[i].getRole().toString());
+                holder.playerRole1.setText(playersTeam1[i].getRole());
             if(playersTeam1[i].getImage_url() != null)
-                Picasso.get().load(playersTeam1[i].getImage_url().toString()).transform(transformation).transform(new CropCircleTransformation()).into(holder.playerImg1);
+                Picasso.get().load(playersTeam1[i].getImage_url()).transform(transformation).transform(new CropCircleTransformation()).into(holder.playerImg1);
         }
 
         if(playersTeam2.length > 0){
-            holder.playerName2.setText(playersTeam2[i].getName().toString());
+            holder.playerName2.setText(playersTeam2[i].getName());
             if(playersTeam2[i].getRole() != null)
-                holder.playerRole2.setText(playersTeam2[i].getRole().toString());
+                holder.playerRole2.setText(playersTeam2[i].getRole());
             if(playersTeam2[i].getImage_url() != null)
-                Picasso.get().load(playersTeam2[i].getImage_url().toString()).transform(transformation).transform(new CropCircleTransformation()).into(holder.playerImg2);
+                Picasso.get().load(playersTeam2[i].getImage_url()).transform(transformation).transform(new CropCircleTransformation()).into(holder.playerImg2);
         }
     }
 

@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardView kek = (CardView) v.findViewById(R.id.news_card1);
         CardView cardView = (CardView) v.findViewById(R.id.esport_news);
         cardView.setOnClickListener((view -> {
             Intent i = new Intent(getActivity(), NewsActivity.class);

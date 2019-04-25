@@ -82,12 +82,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         displayMatch(opponents, holder, position);
 
-        holder.teamGroup.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
+        holder.teamGroup.setOnLongClickListener((View) -> {
                 Toast.makeText(context, (CharSequence) matchInfo, Toast.LENGTH_SHORT).show();
                 return false;
-            }
         });
 
         holder.teamGroup.setOnClickListener(View -> {

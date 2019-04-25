@@ -45,8 +45,7 @@
         </activity>
         <activity
             android:name=".NewsActivity"
-            android:label="News"
-            android:parentActivityName=".MainActivity">
+            android:label="News">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

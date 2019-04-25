@@ -13,4 +13,8 @@
     <string name="estream">EStream</string>
     <string name="tap_here_to_begin">tap here to begin</string>
     <string name="news_punchline">Read the hottest eSports news!</string>
+    <string name="noti_set">Set a notification from the icon</string>
+    <string name="cal_xd">Track your matches in the calendar</string>
+    <string name="noti_msg">We will notify you when your match starts</string>
+    <string name="fav_d">Choose your favorite game</string>
 </resources>

@@ -7,15 +7,32 @@
     tools:context=".Instructions.Slide3Fragment">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="match_parent">
         <ImageView
-            android:layout_gravity="center_vertical"
+            android:id="@+id/img1"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ss2"/>
-    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/noti_set"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
