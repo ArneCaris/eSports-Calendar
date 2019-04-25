@@ -101,7 +101,7 @@ public class AlarmNotificationService extends IntentService {
 
 
         Notification myNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle(match.getLeague().getName())
+                .setContentTitle(match.getName())
                 .setContentText(message)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setTicker("Notification!")
