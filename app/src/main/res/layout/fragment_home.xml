@@ -33,30 +33,50 @@
 
     <RelativeLayout
         android:layout_below="@+id/recommendTxt"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.CardView
-            android:id="@+id/news_card1"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            app:cardBackgroundColor="@color/colorMain"
-            android:background="@drawable/border_full"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/esport_news"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
-                android:src="@drawable/teo_wide"
+                android:id="@+id/csy"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:src="@drawable/teo_wide" />
+
+            <TextView
+                android:paddingTop="5sp"
+                android:id="@+id/comp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/csy"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:text="@string/news_punchline"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp" />
 
-        </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
     </RelativeLayout>
-        <Button
-            android:id="@+id/testbtn"
-            android:text="test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
 
         <!--<RelativeLayout
             android:id="@+id/news_view1"

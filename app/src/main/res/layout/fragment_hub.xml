@@ -47,7 +47,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/game_logo2" />
+                        android:src="@drawable/csgo_white" />
                 </LinearLayout>
 
                 <RelativeLayout
