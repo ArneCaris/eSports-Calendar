@@ -75,14 +75,14 @@ public class MatchActivity extends AppCompatActivity {
             List<Match> listOfJson = Arrays.asList(json);
             Collections.sort(listOfJson);
 
-            Map<Date, List<Match>> groupJson = listOfJson.stream()
-                    .collect(Collectors.groupingBy(Match::getBegin_at));
+//            Map<Date, List<Match>> groupJson = listOfJson.stream()
+//                    .collect(Collectors.groupingBy(Match::getBegin_at));
 
             TreeMap<Date, List<Match>> sorted = new TreeMap<>();
-            sorted.putAll(groupJson);
+//            sorted.putAll(groupJson);
 
-            groupJson.size();
-            groupJson.values();
+//            groupJson.size();
+//            groupJson.values();
 
             Match[] matches   = listOfJson.toArray(json);
             initMatchRecyclerView(matches, game);

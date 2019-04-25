@@ -3,7 +3,6 @@ package calendar.esports;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
@@ -60,24 +59,18 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         String matchInfo = matches[position].getName() + ": " + matches[position].getId().toString();
-
-        String gameIcon = games;
-
-        String matchHour = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(matches[position].getBegin_at());
+        String matchHour = new SimpleDateFormat("h:mm a", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchHour.setText(matchHour);
-
-        String matchMonth = new SimpleDateFormat("MMM", Locale.getDefault()).format(matches[position].getBegin_at());
+        String matchMonth = new SimpleDateFormat("MMM", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchMonth.setText(matchMonth);
-
-        String matchDate = new SimpleDateFormat("d", Locale.getDefault()).format(matches[position].getBegin_at());
+        String matchDate = new SimpleDateFormat("d", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchDate.setText(matchDate);
-
-        String matchWeekDay = new SimpleDateFormat("E", Locale.getDefault()).format(matches[position].getBegin_at());
+        String matchWeekDay = new SimpleDateFormat("E", Locale.ENGLISH).format(matches[position].getBegin_at());
         holder.matchWeekDay.setText(matchWeekDay);
+
 
         String matchLeague = matches[position].getLeague().getName();
         holder.matchLeague.setText(matchLeague);
-
         Opponents[] opponents = matches[position].getOpponents();
 
         displayMatch(opponents, holder, position);
@@ -106,7 +99,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 intent.putExtra("gameIcon", games);
                 intent.putExtra("match", matches[position]);
                 intent.putExtra("position", position);
-                int ticks  = (int) System.currentTimeMillis();
                 int ticks2 = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
                 pendingIntent = PendingIntent.getService(context.getApplicationContext(), 100, intent, ticks2);
 
@@ -114,19 +106,27 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     holder.notificationIcon.setImageResource(R.drawable.game_logo1);
                     notificationPos = 1;
                     notifyMatch(context, matches, alarmManager);
-//                    NotificationEventReceiver.setupAlarm(context, matches[position]);
+                    longToastFeedback("Game reminder is set");
+                    notifyCalendar();
                 }
 
                 else if (notificationPos == 1){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
+                    longToastFeedback("Game reminder is cancelled");
                     cancelMatchNotification(context, alarmManager);
                 }
+            }
 
-                //Function to add event to the calendar (with bundle? or args? or import calendar?)
+            private void longToastFeedback(String game_reminder_is_set) {
+                for (int i = 0; i < 2; i ++){
+                    Toast.makeText(context, game_reminder_is_set, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            private void notifyCalendar() {
                 String time = matches[position].getBegin_at().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
-                ArrayList<String> times = new ArrayList<>();
                 try {
                     Date date = sdf.parse(time);
                     Long timeInMilliseconds = date.getTime();
@@ -176,8 +176,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 long sec = getInterval( matches[position].getBegin_at().toString());
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
-                alarmManager.set(AlarmManager.RTC_WAKEUP,  sec, pendingIntent);
-
+                alarmManager.set(AlarmManager.RTC_WAKEUP,  now + 5000, pendingIntent);
             }
 
             private long getInterval(String milis) {
