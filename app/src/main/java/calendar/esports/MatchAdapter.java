@@ -107,13 +107,21 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                     holder.notificationIcon.setImageResource(R.drawable.game_logo1);
                     notificationPos = 1;
                     notifyMatch(context, matches, alarmManager);
+                    longToastFeedback("Game reminder is set");
                     notifyCalendar();
                 }
 
                 else if (notificationPos == 1){
                     holder.notificationIcon.setImageResource(R.drawable.ic_notifications_black_24dp);
                     notificationPos = 0;
+                    longToastFeedback("Game reminder is cancelled");
                     cancelMatchNotification(context, alarmManager);
+                }
+            }
+
+            private void longToastFeedback(String game_reminder_is_set) {
+                for (int i = 0; i < 2; i ++){
+                    Toast.makeText(context, game_reminder_is_set, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -169,7 +177,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 long sec = getInterval( matches[position].getBegin_at().toString());
                 long now = System.currentTimeMillis();
                 if(now < sec) Log.d("CompareTime", "notifyMatch: Now:" + now + " < Sec: " + sec );
-                alarmManager.set(AlarmManager.RTC_WAKEUP,  sec, pendingIntent);
+                alarmManager.set(AlarmManager.RTC_WAKEUP,  now + 5000, pendingIntent);
             }
 
             private long getInterval(String milis) {

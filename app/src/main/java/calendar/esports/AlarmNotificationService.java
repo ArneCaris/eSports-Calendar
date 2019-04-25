@@ -44,8 +44,8 @@ public class AlarmNotificationService extends IntentService {
 
             Log.d("matchName", "onReceive Match: " + match.getName());
             Log.d("gameIcon", "onReceive: " + gameIcon);
-            sendNotification("Match is Starting", gameIcon, match);
             createNotificationChannel();
+            sendNotification("Match is Starting", gameIcon, match);
         }
     }
 
@@ -59,16 +59,12 @@ public class AlarmNotificationService extends IntentService {
             notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(notificationChannel);
         }
-
     }
-
 
     private void sendNotification(String msg, String gameIcon, Match match) {
         notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
         String timeOfEvent = new SimpleDateFormat("dd-MM-yyyy hh:mm a", Locale.getDefault()).format(match.getBegin_at());
         String defLogo = "game_logo1" ;
-
         String urlCsgo = "https://www.twitch.tv/directory/game/Counter-Strike%3A%20Global%20Offensive";
         String urlLol = "https://www.twitch.tv/directory/game/League%20of%20Legends";
         String urlOw = "https://www.twitch.tv/directory/game/Overwatch";
@@ -102,8 +98,7 @@ public class AlarmNotificationService extends IntentService {
         String message = ("You've set a notification for " + match.getName() + "\n" + "Match starts at: "
                 + timeOfEvent);
 
-        PendingIntent pendingStreamIntent = PendingIntent.getActivity(this, 1, streamIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+        PendingIntent pendingStreamIntent = PendingIntent.getActivity(this, 0, streamIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         Notification myNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -115,12 +110,9 @@ public class AlarmNotificationService extends IntentService {
                 //.setDefaults(Notification.DEFAULT_SOUND)
                 //.setAutoCancel(true)
                 .setSmallIcon(gameIdentifier)
-                .setOngoing(true)
+//                .setOngoing(true)
                 .setContentIntent(pendingStreamIntent)
                 .build();
-
-
-
 
         notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
     }

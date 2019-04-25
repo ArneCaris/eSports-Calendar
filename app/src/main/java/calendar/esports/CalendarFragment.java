@@ -164,8 +164,6 @@ public class CalendarFragment extends Fragment {
                 if (eventsView.getText().toString().matches("")) {
                     eventsView.setText("No events scheduled for this day!");
                 }
-
-
             }
 
             @Override
