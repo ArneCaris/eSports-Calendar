@@ -48,7 +48,7 @@ public class SlideActivity extends FragmentActivity {
 
 
         //Shows the instructions only once
-        /*SharedPreferences preferences = getSharedPreferences("ActivityPref", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("ActivityPref", Context.MODE_PRIVATE);
         if (preferences.getBoolean("activity_executed", false)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -57,7 +57,7 @@ public class SlideActivity extends FragmentActivity {
             SharedPreferences.Editor ed = preferences.edit();
             ed.putBoolean("activity_executed", true);
             ed.commit();
-        }*/
+        }
 
 
 
